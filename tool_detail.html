@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#690005",
+                        "on-tertiary-fixed-variant": "#47464a",
+                        "surface-bright": "#39393b",
+                        "surface": "#131315",
+                        "surface-container-highest": "#353437",
+                        "surface-variant": "#353437",
+                        "inverse-surface": "#e5e1e4",
+                        "secondary": "#c8c5ca",
+                        "surface-container-high": "#2a2a2c",
+                        "on-primary-fixed": "#002113",
+                        "border-subtle": "#27272a",
+                        "on-tertiary": "#303033",
+                        "on-secondary": "#303033",
+                        "inverse-on-surface": "#313032",
+                        "on-primary-container": "#00422b",
+                        "background": "#131315",
+                        "inverse-primary": "#006c49",
+                        "on-surface": "#e5e1e4",
+                        "primary": "#4edea3",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed": "#1b1b1e",
+                        "ink": "#f4f4f5",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#47464a",
+                        "secondary-fixed-dim": "#c8c5ca",
+                        "primary-fixed-dim": "#4edea3",
+                        "tertiary-fixed": "#e4e1e5",
+                        "primary-container": "#10b981",
+                        "tertiary": "#c8c6c9",
+                        "primary-fixed": "#6ffbbe",
+                        "on-background": "#e5e1e4",
+                        "accent-emerald": "#10b981",
+                        "on-secondary-fixed-variant": "#47464a",
+                        "surface-tint": "#4edea3",
+                        "tertiary-fixed-dim": "#c8c6c9",
+                        "surface-container-low": "#1c1b1d",
+                        "secondary-fixed": "#e4e1e6",
+                        "on-tertiary-fixed": "#1b1b1e",
+                        "outline-variant": "#3c4a42",
+                        "surface-container": "#201f22",
+                        "tertiary-container": "#a4a2a6",
+                        "on-primary-fixed-variant": "#005236",
+                        "muted": "#a1a1aa",
+                        "surface-dim": "#131315",
+                        "on-surface-variant": "#bbcabf",
+                        "surface-container-lowest": "#0e0e10",
+                        "on-tertiary-container": "#39393c",
+                        "error-container": "#93000a",
+                        "on-primary": "#003824",
+                        "outline": "#86948a",
+                        "on-secondary-container": "#b6b4b8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "grid-margin-mobile": "1rem",
+                        "grid-margin": "2rem",
+                        "bento-gap": "1rem",
+                        "bento-gap-sm": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "display-hero-mobile": ["Geist"],
+                        "headline-section": ["Geist"],
+                        "label-metadata": ["JetBrains Mono"],
+                        "body-muted": ["Geist"],
+                        "label-mono": ["JetBrains Mono"],
+                        "display-hero": ["Geist"],
+                        "body-base": ["Geist"]
+                    },
+                    "fontSize": {
+                        "display-hero-mobile": ["32px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "600"}],
+                        "headline-section": ["24px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                        "label-metadata": ["11px", {"lineHeight": "1", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "body-muted": ["14px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "label-mono": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "display-hero": ["40px", {"lineHeight": "1", "letterSpacing": "-0.05em", "fontWeight": "600"}],
+                        "body-base": ["14px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .code-block {
+            background-color: #0e0e10;
+            border: 1px solid #27272a;
+            position: relative;
+        }
+        .glass-panel {
+            background: rgba(9, 9, 11, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid #27272a;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1rem;
+        }
+        .glow-emerald {
+            box-shadow: 0 0 20px -5px rgba(78, 222, 163, 0.1);
+        }
+        .glow-emerald:hover {
+            box-shadow: 0 0 25px -2px rgba(78, 222, 163, 0.2);
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #131315; }
+        ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #353437; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-base selection:bg-primary selection:text-on-primary">
+<!-- Shell: SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r border-outline-variant bg-surface flex flex-col py-grid-margin z-50">
+<div class="px-6 mb-10">
+<h1 class="font-headline-section text-headline-section text-primary">Kinetic Noir</h1>
+<p class="font-label-metadata text-label-metadata text-on-surface-variant mt-1">Technical Directory</p>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 py-3 transition-colors text-primary border-l-2 border-primary pl-4 font-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<span>AI Tools</span>
+</a>
+<a class="flex items-center gap-3 py-3 transition-colors text-on-surface-variant pl-4 hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined">terminal</span>
+<span>Dev Tools</span>
+</a>
+<a class="flex items-center gap-3 py-3 transition-colors text-on-surface-variant pl-4 hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined">potted_plant</span>
+<span>Design</span>
+</a>
+<a class="flex items-center gap-3 py-3 transition-colors text-on-surface-variant pl-4 hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined">bolt</span>
+<span>Productivity</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-1">
+<a class="flex items-center gap-3 py-3 transition-colors text-on-surface-variant pl-4 hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 py-3 transition-colors text-on-surface-variant pl-4 hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span>Documentation</span>
+</a>
+<div class="px-4 mt-6">
+<div class="flex items-center gap-3 p-2 bg-surface-container-low rounded-lg border border-border-subtle">
+<img alt="User profile" class="w-8 h-8 rounded-full border border-primary/20" data-alt="A detailed close-up portrait of a professional software developer with a clean, modern aesthetic. He is wearing a dark charcoal turtleneck against a deep monochromatic background. The lighting is dramatic and technical, with a soft emerald green rim light highlighting the contours of his face, matching a high-end minimalist dark-tech UI style." src="https://lh3.googleusercontent.com/aida/ADBb0uh6Ow_sZUncf1ZR2ojT42pH5ZH-bjVkpFLUBPxn05zBvSe_b4kMm1uegASYmcTcs-UYc57HcZc2Suw1Z8Rm3czWpUjrBytd8KmbwEccsaqycAq4ZAfpkSCyDbk1E8Dhp6rPrx-JVl1liOvZWIRCaG-x5yjXi3PiqtWmaDx8nW89c4pZfYWADvKuoqT6RdD0Y041meeslKG8GU5GCfcLT2AWD67cncYLWWuyYC4TUcy8bR7RrlnKHMVLnmQ"/>
+<div class="flex-1 overflow-hidden">
+<p class="font-label-mono text-label-mono text-on-surface truncate">Alex Rivera</p>
+<p class="font-label-metadata text-[10px] text-muted truncate">Full-stack Arch</p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Shell: TopNavBar -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] z-40 bg-surface/80 backdrop-blur-md border-b border-outline-variant">
+<div class="flex justify-between items-center px-grid-margin h-16">
+<div class="flex items-center gap-4 flex-1">
+<a class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">arrow_back</span>
+<span class="font-label-mono text-label-mono">Back to Library</span>
+</a>
+<div class="h-4 w-px bg-outline-variant mx-2"></div>
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant scale-75">search</span>
+<input class="bg-surface-container-lowest border border-outline-variant rounded-full pl-10 pr-4 py-1.5 w-full text-body-base focus:outline-none focus:border-primary transition-all" placeholder="Search NeuralNexus modules..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-64 pt-16 min-h-screen bg-background">
+<div class="max-w-container-max mx-auto px-grid-margin py-10">
+<!-- Hero Section -->
+<div class="mb-12">
+<div class="flex items-start justify-between">
+<div class="flex gap-6 items-center">
+<div class="w-20 h-20 bg-primary/10 border border-primary/20 rounded-xl flex items-center justify-center glow-emerald">
+<span class="material-symbols-outlined text-primary text-5xl" style="font-variation-settings: 'FILL' 1;">network_intelligence</span>
+</div>
+<div>
+<div class="flex items-center gap-3">
+<h2 class="font-display-hero text-display-hero text-on-surface">NeuralNexus Pro</h2>
+<span class="bg-primary/20 text-primary font-label-mono text-label-mono px-2 py-0.5 rounded border border-primary/30">v4.2.0-stable</span>
+</div>
+<p class="font-body-base text-muted max-w-2xl mt-2">The industry-standard engine for high-density neural computation and real-time inference optimization. Designed for sub-millisecond latency in production environments.</p>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<button class="bg-primary text-background font-label-mono py-2 px-6 rounded-lg font-bold hover:opacity-90 transition-opacity flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                            Install Package
+                        </button>
+<button class="bg-transparent border border-border-subtle text-on-surface font-label-mono py-2 px-6 rounded-lg hover:bg-surface-container-high transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">star</span>
+                            14.2k Stars
+                        </button>
+</div>
+</div>
+</div>
+<!-- Bento Layout Content -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Main Narrative Column -->
+<div class="col-span-12 lg:col-span-8 space-y-6">
+<!-- Performance Chart -->
+<div class="bg-surface-container-low border border-border-subtle rounded-xl p-6">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="font-headline-section text-headline-section text-on-surface">Usage Statistics</h3>
+<p class="font-label-metadata text-label-metadata text-muted">Node activity vs. Latency (Last 30 Days)</p>
+</div>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-primary rounded-full"></div>
+<span class="font-label-metadata text-label-metadata text-on-surface">Nodes</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-muted rounded-full"></div>
+<span class="font-label-metadata text-label-metadata text-on-surface">Requests</span>
+</div>
+</div>
+</div>
+<div class="h-48 flex items-end justify-between gap-1">
+<!-- Simulated Chart -->
+<div class="flex-1 bg-surface-container-high rounded-t-sm transition-all hover:bg-primary/40" style="height: 40%"></div>
+<div class="flex-1 bg-surface-container-high rounded-t-sm transition-all hover:bg-primary/40" style="height: 35%"></div>
+<div class="flex-1 bg-surface-container-high rounded-t-sm transition-all hover:bg-primary/40" style="height: 55%"></div>
+<div class="flex-1 bg-surface-container-high rounded-t-sm transition-all hover:bg-primary/40" style="height: 45%"></div>
+<div class="flex-1 bg-surface-container-high rounded-t-sm transition-all hover:bg-primary/40" style="height: 70%"></div>
+<div class="flex-1 bg-surface-container-high rounded-t-sm transition-all hover:bg-primary/40" style="height: 60%"></div>
+<div class="flex-1 bg-primary/60 rounded-t-sm transition-all hover:bg-primary/80" style="height: 85%"></div>
+<div class="flex-1 bg-surface-container-high rounded-t-sm transition-all hover:bg-primary/40" style="height: 50%"></div>
+<div class="flex-1 bg-surface-container-high rounded-t-sm transition-all hover:bg-primary/40" style="height: 65%"></div>
+<div class="flex-1 bg-surface-container-high rounded-t-sm transition-all hover:bg-primary/40" style="height: 40%"></div>
+<div class="flex-1 bg-surface-container-high rounded-t-sm transition-all hover:bg-primary/40" style="height: 30%"></div>
+<div class="flex-1 bg-surface-container-high rounded-t-sm transition-all hover:bg-primary/40" style="height: 55%"></div>
+<div class="flex-1 bg-surface-container-high rounded-t-sm transition-all hover:bg-primary/40" style="height: 75%"></div>
+<div class="flex-1 bg-surface-container-high rounded-t-sm transition-all hover:bg-primary/40" style="height: 90%"></div>
+<div class="flex-1 bg-primary/60 rounded-t-sm transition-all hover:bg-primary/80" style="height: 100%"></div>
+</div>
+</div>
+<!-- Technical Overview -->
+<div class="bg-surface border border-border-subtle rounded-xl p-6">
+<h3 class="font-headline-section text-headline-section text-on-surface mb-4">Technical Overview</h3>
+<div class="prose prose-invert max-w-none font-body-base text-on-surface-variant leading-relaxed">
+<p class="mb-4">NeuralNexus Pro implements a sophisticated multi-headed attention mechanism specifically optimized for Edge Computing. Unlike standard implementations, it utilizes a proprietary <span class="text-primary">Quantized Tensor Architecture (QTA)</span> to reduce memory footprint by 64% without compromising on precision.</p>
+<div class="grid grid-cols-2 gap-4 my-6">
+<div class="bg-surface-container-high p-4 rounded-lg border border-border-subtle">
+<p class="font-label-mono text-label-mono text-primary uppercase mb-1">Architecture</p>
+<p class="text-on-surface">Sparse-Attention Layered Core</p>
+</div>
+<div class="bg-surface-container-high p-4 rounded-lg border border-border-subtle">
+<p class="font-label-mono text-label-mono text-primary uppercase mb-1">Latency</p>
+<p class="text-on-surface">&lt; 0.4ms @ 4096 tokens</p>
+</div>
+</div>
+<p>For developers building large-scale distributed systems, the Nexus core offers native support for gRPC and WebSockets, ensuring seamless data flow across heterogenous clusters.</p>
+</div>
+</div>
+<!-- Code Section -->
+<div class="bg-surface border border-border-subtle rounded-xl overflow-hidden">
+<div class="bg-surface-container-high px-4 py-2 border-b border-border-subtle flex items-center justify-between">
+<div class="flex gap-2">
+<div class="w-3 h-3 rounded-full bg-[#ff5f57]"></div>
+<div class="w-3 h-3 rounded-full bg-[#febc2e]"></div>
+<div class="w-3 h-3 rounded-full bg-[#28c840]"></div>
+</div>
+<span class="font-label-mono text-label-mono text-muted">main.py</span>
+</div>
+<div class="p-6 font-label-mono text-label-mono overflow-x-auto">
+<pre class="text-[#f8f8f2]"><span class="text-primary">import</span> neural_nexus <span class="text-primary">as</span> nx
+
+<span class="text-muted"># Initialize the high-density compute engine</span>
+engine = nx.<span class="text-accent-emerald">NexusCore</span>(
+    precision=<span class="text-[#ae81ff]">"fp16"</span>, 
+    threads=<span class="text-[#ae81ff]">12</span>,
+    cache_policy=<span class="text-[#ae81ff]">"aggressive"</span>
+)
+
+<span class="text-muted"># Load weights from the distributed cluster</span>
+engine.<span class="text-accent-emerald">load_cluster</span>(<span class="text-[#e6db74]">"nexus://node-04-production"</span>)
+
+<span class="text-muted"># Perform a sub-millisecond inference</span>
+results = engine.<span class="text-accent-emerald">compute</span>(data_stream)
+
+<span class="text-primary">print</span>(f<span class="text-[#e6db74]">"Inference complete: {results.latency}ms"</span>)</pre>
+</div>
+</div>
+</div>
+<!-- Sidebar -->
+<aside class="col-span-12 lg:col-span-4 space-y-6">
+<!-- Maintainer Info -->
+<div class="bg-surface-container-low border border-border-subtle rounded-xl p-6">
+<h4 class="font-label-mono text-label-mono text-muted uppercase tracking-widest mb-4">Maintainer</h4>
+<div class="flex items-center gap-4 mb-6">
+<img alt="Maintainer organization" class="w-12 h-12 rounded bg-surface-container-highest p-1 border border-border-subtle" data-alt="A minimalist tech logo for a fictional software organization named 'Nexus Systems'. The logo is a stylized, geometric 'N' made of glowing emerald green fiber-optic lines on a black matte cube background. The image is clean, corporate-modern, and highly technical in appearance." src="https://lh3.googleusercontent.com/aida/ADBb0ujoYRHNl82_K_t2eKmuj6bUlSQc3HCvmyaThhHi1Y8RRu1UmDVxeuvZ8wFiJ03TnvpH8yU5wS5cTlGH10AxS3ElVbd-kGuhLOL0AYjVYH0DqwT0UQITyKfOjJFIwRPCgUogWSs_osuHbpKHhx9i4iPQJFxZCkEDfPmZO1ViTCbyCMxL6Rvo852Y8imKf3HvcMMieJID9Q3lxv01SEwiiJ0U_g9v9cq1emR24nTEy3RaK71PagxKXegxKAY"/>
+<div>
+<p class="font-body-base text-on-surface font-bold">Nexus Systems Corp</p>
+<p class="font-label-metadata text-label-metadata text-muted">Verified Enterprise Contributor</p>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between text-label-metadata">
+<span class="text-muted">License</span>
+<span class="text-on-surface">Apache 2.0</span>
+</div>
+<div class="flex justify-between text-label-metadata">
+<span class="text-muted">Last Commit</span>
+<span class="text-on-surface">2 hours ago</span>
+</div>
+<div class="flex justify-between text-label-metadata">
+<span class="text-muted">Downloads/Mo</span>
+<span class="text-on-surface">2.4M</span>
+</div>
+</div>
+</div>
+<!-- Installation -->
+<div class="bg-surface border border-border-subtle rounded-xl p-6">
+<h4 class="font-label-mono text-label-mono text-muted uppercase tracking-widest mb-4">Installation</h4>
+<div class="bg-surface-container-lowest border border-border-subtle rounded p-3 flex items-center justify-between mb-3">
+<code class="font-label-mono text-label-mono text-primary">pip install neural-nexus-pro</code>
+<button class="text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined text-sm">content_copy</span></button>
+</div>
+<div class="bg-surface-container-lowest border border-border-subtle rounded p-3 flex items-center justify-between">
+<code class="font-label-mono text-label-mono text-primary">npm install @nexus/core-pro</code>
+<button class="text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined text-sm">content_copy</span></button>
+</div>
+</div>
+<!-- Related Tools -->
+<div class="bg-surface border border-border-subtle rounded-xl p-6">
+<h4 class="font-label-mono text-label-mono text-muted uppercase tracking-widest mb-4">Related Tools</h4>
+<div class="space-y-4">
+<a class="group flex items-center gap-3 p-2 hover:bg-surface-container-high rounded-lg transition-colors border border-transparent hover:border-border-subtle" href="#">
+<div class="w-10 h-10 bg-secondary-container rounded flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined scale-75">database</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="font-label-mono text-label-mono text-on-surface group-hover:text-primary transition-colors">NexusDB</p>
+<p class="text-[10px] text-muted truncate">Vectorized storage for nexus nodes</p>
+</div>
+</a>
+<a class="group flex items-center gap-3 p-2 hover:bg-surface-container-high rounded-lg transition-colors border border-transparent hover:border-border-subtle" href="#">
+<div class="w-10 h-10 bg-secondary-container rounded flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined scale-75">monitoring</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="font-label-mono text-label-mono text-on-surface group-hover:text-primary transition-colors">InsightFlow</p>
+<p class="text-[10px] text-muted truncate">Real-time inference monitoring</p>
+</div>
+</a>
+<a class="group flex items-center gap-3 p-2 hover:bg-surface-container-high rounded-lg transition-colors border border-transparent hover:border-border-subtle" href="#">
+<div class="w-10 h-10 bg-secondary-container rounded flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined scale-75">security</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="font-label-mono text-label-mono text-on-surface group-hover:text-primary transition-colors">GuardRail AI</p>
+<p class="text-[10px] text-muted truncate">Security wrapper for neural models</p>
+</div>
+</a>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<script>
+        // Simple micro-interaction for code copy feedback
+        document.querySelectorAll('button').forEach(btn => {
+            if(btn.innerHTML.includes('content_copy')) {
+                btn.addEventListener('click', () => {
+                    const originalIcon = btn.innerHTML;
+                    btn.innerHTML = '<span class="material-symbols-outlined text-sm text-primary">check</span>';
+                    setTimeout(() => {
+                        btn.innerHTML = originalIcon;
+                    }, 2000);
+                });
+            }
+        });
+
+        // Dynamic chart pulse effect
+        const bars = document.querySelectorAll('.bg-surface-container-high, .bg-primary\\/60');
+        setInterval(() => {
+            const randomBar = bars[Math.floor(Math.random() * bars.length)];
+            randomBar.style.opacity = '0.7';
+            setTimeout(() => {
+                randomBar.style.opacity = '1';
+            }, 300);
+        }, 1500);
+    </script>
+</body></html>

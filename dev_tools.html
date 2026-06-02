@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dev Tools | Kinetic Noir</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#47464a",
+                        "surface-container-high": "#2a2a2c",
+                        "on-primary-container": "#00422b",
+                        "on-surface-variant": "#bbcabf",
+                        "accent-emerald": "#10b981",
+                        "surface-bright": "#39393b",
+                        "ink": "#f4f4f5",
+                        "on-primary": "#003824",
+                        "inverse-surface": "#e5e1e4",
+                        "on-tertiary-fixed": "#1b1b1e",
+                        "on-tertiary-container": "#39393c",
+                        "background": "#131315",
+                        "primary-fixed": "#6ffbbe",
+                        "primary-container": "#10b981",
+                        "inverse-on-surface": "#313032",
+                        "outline-variant": "#3c4a42",
+                        "surface-dim": "#131315",
+                        "surface-container-low": "#1c1b1d",
+                        "surface": "#131315",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#e4e1e5",
+                        "surface-variant": "#353437",
+                        "tertiary-fixed-dim": "#c8c6c9",
+                        "error-container": "#93000a",
+                        "secondary-fixed-dim": "#c8c5ca",
+                        "on-secondary-fixed": "#1b1b1e",
+                        "on-error": "#690005",
+                        "on-tertiary": "#303033",
+                        "on-surface": "#e5e1e4",
+                        "on-background": "#e5e1e4",
+                        "surface-container-lowest": "#0e0e10",
+                        "inverse-primary": "#006c49",
+                        "tertiary-container": "#a4a2a6",
+                        "tertiary": "#c8c6c9",
+                        "secondary-fixed": "#e4e1e6",
+                        "on-primary-fixed": "#002113",
+                        "on-secondary-container": "#b6b4b8",
+                        "muted": "#a1a1aa",
+                        "surface-tint": "#4edea3",
+                        "secondary": "#c8c5ca",
+                        "error": "#ffb4ab",
+                        "border-subtle": "#27272a",
+                        "primary": "#4edea3",
+                        "on-tertiary-fixed-variant": "#47464a",
+                        "surface-container": "#201f22",
+                        "outline": "#86948a",
+                        "surface-container-highest": "#353437",
+                        "on-secondary": "#303033",
+                        "on-secondary-fixed-variant": "#47464a",
+                        "primary-fixed-dim": "#4edea3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "grid-margin-mobile": "1rem",
+                        "grid-margin": "2rem",
+                        "bento-gap": "1rem",
+                        "container-max": "1280px",
+                        "bento-gap-sm": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "body-muted": ["Geist"],
+                        "label-mono": ["JetBrains Mono"],
+                        "label-metadata": ["JetBrains Mono"],
+                        "headline-section": ["Geist"],
+                        "display-hero-mobile": ["Geist"],
+                        "display-hero": ["Geist"],
+                        "body-base": ["Geist"]
+                    },
+                    "fontSize": {
+                        "body-muted": ["14px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "label-mono": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "label-metadata": ["11px", {"lineHeight": "1", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "headline-section": ["24px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                        "display-hero-mobile": ["32px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "600"}],
+                        "display-hero": ["40px", {"lineHeight": "1", "letterSpacing": "-0.05em", "fontWeight": "600"}],
+                        "body-base": ["14px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .code-preview-overlay {
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+        }
+        .tool-card:hover .code-preview-overlay {
+            opacity: 1;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-base antialiased">
+<!-- Sidebar Navigation -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r border-outline-variant bg-surface flex flex-col py-grid-margin z-50">
+<div class="px-6 mb-12">
+<h1 class="font-headline-section text-headline-section text-primary">Kinetic Noir</h1>
+<p class="text-on-surface-variant text-label-metadata uppercase tracking-widest mt-1">Technical Directory</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Navigation Items from JSON logic -->
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant pl-4 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span class="font-body-base text-body-base">AI Tools</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-primary border-l-2 border-primary pl-4 font-bold transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span class="font-body-base text-body-base">Dev Tools</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant pl-4 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="potted_plant">potted_plant</span>
+<span class="font-body-base text-body-base">Design</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant pl-4 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+<span class="font-body-base text-body-base">Productivity</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-outline-variant space-y-1">
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant pl-4 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-base text-body-base">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant pl-4 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-body-base text-body-base">Documentation</span>
+</a>
+</div>
+</aside>
+<!-- Top Navigation -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] z-40 bg-surface/80 backdrop-blur-md border-b border-outline-variant h-16 flex justify-between items-center px-grid-margin">
+<div class="flex items-center bg-surface-container-lowest border border-outline-variant px-3 py-1.5 rounded-lg w-96 focus-within:border-primary transition-all group">
+<span class="material-symbols-outlined text-on-surface-variant mr-2" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-base w-full p-0 placeholder-on-surface-variant/50" placeholder="Search dev tools, CLI strings..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-2">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="h-8 w-8 bg-surface-container-high border border-outline-variant rounded-full flex items-center justify-center cursor-pointer hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-64 pt-24 px-grid-margin pb-12 max-w-container-max">
+<!-- Header Section -->
+<section class="mb-10">
+<h2 class="font-display-hero text-display-hero mb-2">Development Ecosystem</h2>
+<p class="text-on-surface-variant max-w-2xl font-body-base">High-performance engineering utilities, CLI managers, and deployment pipelines optimized for technical precision.</p>
+</section>
+<!-- Bento Grid Categories -->
+<div class="grid grid-cols-12 gap-bento-gap">
+<!-- Filter Bar / Chips -->
+<div class="col-span-12 flex items-center gap-2 mb-4 overflow-x-auto hide-scrollbar">
+<span class="bg-primary text-on-primary-fixed px-3 py-1 text-label-mono rounded uppercase tracking-wider">All Tools</span>
+<span class="bg-surface-container border border-outline-variant text-on-surface-variant px-3 py-1 text-label-mono rounded uppercase tracking-wider hover:border-primary cursor-pointer transition-all">IDE Extensions</span>
+<span class="bg-surface-container border border-outline-variant text-on-surface-variant px-3 py-1 text-label-mono rounded uppercase tracking-wider hover:border-primary cursor-pointer transition-all">Infrastructure</span>
+<span class="bg-surface-container border border-outline-variant text-on-surface-variant px-3 py-1 text-label-mono rounded uppercase tracking-wider hover:border-primary cursor-pointer transition-all">Debugging</span>
+<span class="bg-surface-container border border-outline-variant text-on-surface-variant px-3 py-1 text-label-mono rounded uppercase tracking-wider hover:border-primary cursor-pointer transition-all">Deployment</span>
+</div>
+<!-- Tool Card 1: IDE Extensions -->
+<div class="col-span-12 lg:col-span-4 group tool-card relative bg-surface-container-low border border-border-subtle rounded-lg p-6 hover:bg-surface-container-high transition-all">
+<div class="flex justify-between items-start mb-4">
+<div class="h-10 w-10 bg-surface-container-highest rounded flex items-center justify-center text-primary group-hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined" data-icon="code">code</span>
+</div>
+<span class="bg-primary/20 text-primary px-2 py-0.5 text-label-metadata rounded border border-primary/30 uppercase">Stable</span>
+</div>
+<h3 class="font-headline-section text-on-surface mb-1">V-Stack Intelligence</h3>
+<p class="text-body-muted text-on-surface-variant mb-6 h-12 overflow-hidden">Low-latency language server providing real-time static analysis for Rust and Go projects.</p>
+<div class="flex flex-wrap gap-3 mb-6">
+<div class="flex items-center gap-1.5 grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+<span class="material-symbols-outlined text-[16px]" data-icon="language">language</span>
+<span class="text-label-mono text-on-surface-variant">Rust</span>
+</div>
+<div class="flex items-center gap-1.5 grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+<span class="material-symbols-outlined text-[16px]" data-icon="javascript">javascript</span>
+<span class="text-label-mono text-on-surface-variant">Go</span>
+</div>
+</div>
+<div class="code-preview-overlay absolute inset-x-0 bottom-0 p-6 bg-surface-container-highest/95 backdrop-blur-sm border-t border-primary/20 rounded-b-lg">
+<p class="text-label-mono text-primary mb-2 text-[10px] uppercase">CLI Preview</p>
+<div class="bg-background/80 p-3 rounded font-label-mono text-label-mono text-on-surface-variant border border-outline-variant">
+<span class="text-primary">$</span> vstack-init <span class="text-muted">--strict</span>
+<br/>
+<span class="text-muted">Analyzing local workspace...</span>
+</div>
+</div>
+</div>
+<!-- Tool Card 2: Infrastructure -->
+<div class="col-span-12 lg:col-span-8 group tool-card relative bg-surface-container-low border border-border-subtle rounded-lg p-6 hover:bg-surface-container-high transition-all overflow-hidden">
+<div class="flex flex-col md:flex-row gap-8">
+<div class="flex-1">
+<div class="flex justify-between items-start mb-4">
+<div class="h-10 w-10 bg-surface-container-highest rounded flex items-center justify-center text-primary group-hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined" data-icon="dns">dns</span>
+</div>
+<span class="bg-surface-variant text-on-surface-variant px-2 py-0.5 text-label-metadata rounded border border-outline-variant uppercase">LTS</span>
+</div>
+<h3 class="font-headline-section text-on-surface mb-1">Noir Engine Node</h3>
+<p class="text-body-muted text-on-surface-variant mb-6">Distributed container orchestration engine for high-density edge deployments. Managed service with zero-downtime hot reloading capabilities.</p>
+<div class="grid grid-cols-2 gap-4">
+<div class="border-l border-primary/30 pl-4">
+<span class="block text-label-metadata text-muted uppercase">Uptime</span>
+<span class="text-headline-section font-bold text-on-surface">99.99%</span>
+</div>
+<div class="border-l border-primary/30 pl-4">
+<span class="block text-label-metadata text-muted uppercase">Latency</span>
+<span class="text-headline-section font-bold text-on-surface">14ms</span>
+</div>
+</div>
+</div>
+<div class="w-full md:w-64 bg-background border border-outline-variant rounded p-4 font-label-mono text-[11px] leading-relaxed relative">
+<div class="absolute top-2 right-2 flex gap-1">
+<div class="h-2 w-2 rounded-full bg-red-500/50"></div>
+<div class="h-2 w-2 rounded-full bg-yellow-500/50"></div>
+<div class="h-2 w-2 rounded-full bg-green-500/50"></div>
+</div>
+<p class="text-primary mb-2">// noir.config.js</p>
+<p class="text-on-surface">export default {</p>
+<p class="pl-4 text-on-surface">region: 'us-east-1',</p>
+<p class="pl-4 text-on-surface">replicas: 3,</p>
+<p class="pl-4 text-on-surface">strategy: 'canary'</p>
+<p class="text-on-surface">}</p>
+<div class="mt-4 pt-4 border-t border-outline-variant flex justify-between items-center">
+<span class="text-muted">Status: Running</span>
+<span class="h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Tool Card 3: Debugging -->
+<div class="col-span-12 lg:col-span-5 group tool-card relative bg-surface-container-low border border-border-subtle rounded-lg p-6 hover:bg-surface-container-high transition-all">
+<div class="flex justify-between items-start mb-4">
+<div class="h-10 w-10 bg-surface-container-highest rounded flex items-center justify-center text-primary group-hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined" data-icon="bug_report">bug_report</span>
+</div>
+<span class="bg-surface-variant text-on-surface-variant px-2 py-0.5 text-label-metadata rounded border border-outline-variant uppercase">Beta</span>
+</div>
+<h3 class="font-headline-section text-on-surface mb-1">Deeptrace Debugger</h3>
+<p class="text-body-muted text-on-surface-variant mb-4">Kernel-level trace analysis with automated stack-trace deobfuscation and visual memory leak mapping.</p>
+<div class="flex items-center gap-4 text-label-metadata text-muted border-t border-outline-variant pt-4 mt-auto">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]" data-icon="memory">memory</span> x86/ARM64</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]" data-icon="history">history</span> V8 Snapshots</span>
+</div>
+</div>
+<!-- Tool Card 4: Deployment -->
+<div class="col-span-12 lg:col-span-7 group tool-card relative bg-surface-container-low border border-border-subtle rounded-lg p-6 hover:bg-surface-container-high transition-all overflow-hidden">
+<div class="relative h-full flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-4 items-center">
+<div class="h-10 w-10 bg-surface-container-highest rounded flex items-center justify-center text-primary group-hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined" data-icon="rocket_launch">rocket_launch</span>
+</div>
+<div>
+<h3 class="font-headline-section text-on-surface mb-0">GitOps Pipeline</h3>
+<p class="text-label-metadata text-muted uppercase">Continuous Deployment Core</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="bg-primary/20 text-primary px-2 py-0.5 text-label-metadata rounded border border-primary/30 uppercase mb-1">Stable</span>
+<span class="text-[10px] font-label-mono text-on-surface-variant">v2.4.1</span>
+</div>
+</div>
+<div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-3">
+<div class="bg-background border border-outline-variant p-3 rounded group-hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-primary mb-2" data-icon="inventory_2">inventory_2</span>
+<p class="text-label-mono text-on-surface">Build</p>
+<p class="text-label-metadata text-muted mt-1">Docker Multi-stage</p>
+</div>
+<div class="bg-background border border-outline-variant p-3 rounded group-hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-primary mb-2" data-icon="rule">rule</span>
+<p class="text-label-mono text-on-surface">Test</p>
+<p class="text-label-metadata text-muted mt-1">Jest / Playwright</p>
+</div>
+<div class="bg-background border border-outline-variant p-3 rounded group-hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-primary mb-2" data-icon="cloud_done">cloud_done</span>
+<p class="text-label-mono text-on-surface">Deploy</p>
+<p class="text-label-metadata text-muted mt-1">AWS / GCP / Vercel</p>
+</div>
+</div>
+</div>
+</div>
+<!-- High-Density Quick Actions / Micro Tools -->
+<div class="col-span-12 mt-4">
+<h4 class="text-label-metadata text-muted uppercase tracking-widest mb-4">Utility Micro-Services</h4>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-bento-gap-sm">
+<div class="bg-surface-container-low border border-border-subtle p-3 rounded flex items-center gap-3 hover:border-primary cursor-pointer transition-colors group">
+<span class="material-symbols-outlined text-muted group-hover:text-primary transition-colors" data-icon="json">file_json</span>
+<span class="text-label-mono text-on-surface-variant">Formatter</span>
+</div>
+<div class="bg-surface-container-low border border-border-subtle p-3 rounded flex items-center gap-3 hover:border-primary cursor-pointer transition-colors group">
+<span class="material-symbols-outlined text-muted group-hover:text-primary transition-colors" data-icon="lock_open">lock_open</span>
+<span class="text-label-mono text-on-surface-variant">JWT Decr</span>
+</div>
+<div class="bg-surface-container-low border border-border-subtle p-3 rounded flex items-center gap-3 hover:border-primary cursor-pointer transition-colors group">
+<span class="material-symbols-outlined text-muted group-hover:text-primary transition-colors" data-icon="difference">difference</span>
+<span class="text-label-mono text-on-surface-variant">Diff Viewer</span>
+</div>
+<div class="bg-surface-container-low border border-border-subtle p-3 rounded flex items-center gap-3 hover:border-primary cursor-pointer transition-colors group">
+<span class="material-symbols-outlined text-muted group-hover:text-primary transition-colors" data-icon="key">key</span>
+<span class="text-label-mono text-on-surface-variant">Key Gen</span>
+</div>
+<div class="bg-surface-container-low border border-border-subtle p-3 rounded flex items-center gap-3 hover:border-primary cursor-pointer transition-colors group">
+<span class="material-symbols-outlined text-muted group-hover:text-primary transition-colors" data-icon="speed">speed</span>
+<span class="text-label-mono text-on-surface-variant">Regex Bench</span>
+</div>
+<div class="bg-surface-container-low border border-border-subtle p-3 rounded flex items-center gap-3 hover:border-primary cursor-pointer transition-colors group">
+<span class="material-symbols-outlined text-muted group-hover:text-primary transition-colors" data-icon="query_stats">query_stats</span>
+<span class="text-label-mono text-on-surface-variant">Load Test</span>
+</div>
+</div>
+</div>
+<!-- Promotional / Stats Banner -->
+<div class="col-span-12 mt-8 bg-surface-container-highest/30 border border-outline-variant rounded-lg p-8 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[100px] pointer-events-none"></div>
+<div class="flex-1">
+<h2 class="font-headline-section text-on-surface mb-2">Integrated Monitoring Dashboard</h2>
+<p class="text-body-muted text-on-surface-variant mb-6">Real-time telemetry for all local and remote development environments. Track builds, logs, and performance metrics in one unified terminal interface.</p>
+<button class="bg-primary text-on-primary-fixed px-6 py-2.5 font-label-mono text-label-mono uppercase tracking-widest hover:opacity-80 transition-opacity">Launch Dashboard</button>
+</div>
+<div class="w-full md:w-80 grid grid-cols-2 gap-4">
+<div class="bg-background/60 p-4 border border-outline-variant rounded">
+<p class="text-primary text-headline-section font-bold">4.2k</p>
+<p class="text-label-metadata text-muted uppercase">Active Nodes</p>
+</div>
+<div class="bg-background/60 p-4 border border-outline-variant rounded">
+<p class="text-primary text-headline-section font-bold">12ms</p>
+<p class="text-label-metadata text-muted uppercase">Avg Latency</p>
+</div>
+<div class="bg-background/60 p-4 border border-outline-variant rounded">
+<p class="text-primary text-headline-section font-bold">100%</p>
+<p class="text-label-metadata text-muted uppercase">Security Auth</p>
+</div>
+<div class="bg-background/60 p-4 border border-outline-variant rounded">
+<p class="text-primary text-headline-section font-bold">8.1M</p>
+<p class="text-label-metadata text-muted uppercase">Req / Hour</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Background Decoration -->
+<div class="fixed inset-0 pointer-events-none opacity-20 z-[-1]">
+<div class="absolute top-0 left-0 w-full h-full" style="background-image: radial-gradient(circle at 2px 2px, #27272a 1px, transparent 0); background-size: 40px 40px;"></div>
+</div>
+<script>
+        // Micro-interactions for hover states
+        document.querySelectorAll('.tool-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const icon = card.querySelector('.material-symbols-outlined');
+                if (icon) icon.style.fontVariationSettings = "'FILL' 1";
+            });
+            card.addEventListener('mouseleave', () => {
+                const icon = card.querySelector('.material-symbols-outlined');
+                if (icon) icon.style.fontVariationSettings = "'FILL' 0";
+            });
+        });
+    </script>
+</body></html>

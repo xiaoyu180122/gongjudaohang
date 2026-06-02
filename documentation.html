@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=JetBrains+Mono:wght@100..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#131315",
+                    "on-secondary-fixed-variant": "#47464a",
+                    "inverse-primary": "#006c49",
+                    "on-tertiary-fixed": "#1b1b1e",
+                    "outline-variant": "#3c4a42",
+                    "surface-container-lowest": "#0e0e10",
+                    "primary-fixed-dim": "#4edea3",
+                    "tertiary-fixed": "#e4e1e5",
+                    "on-tertiary": "#303033",
+                    "outline": "#86948a",
+                    "surface-container-highest": "#353437",
+                    "surface": "#131315",
+                    "surface-container-low": "#1c1b1d",
+                    "on-tertiary-fixed-variant": "#47464a",
+                    "on-surface": "#e5e1e4",
+                    "on-error": "#690005",
+                    "surface-variant": "#353437",
+                    "on-primary": "#003824",
+                    "on-error-container": "#ffdad6",
+                    "surface-bright": "#39393b",
+                    "surface-container": "#201f22",
+                    "on-surface-variant": "#bbcabf",
+                    "on-primary-container": "#00422b",
+                    "secondary": "#c8c5ca",
+                    "primary": "#4edea3",
+                    "on-primary-fixed-variant": "#005236",
+                    "tertiary": "#c8c6c9",
+                    "surface-container-high": "#2a2a2c",
+                    "on-secondary": "#303033",
+                    "accent-emerald": "#10b981",
+                    "secondary-fixed-dim": "#c8c5ca",
+                    "on-primary-fixed": "#002113",
+                    "tertiary-fixed-dim": "#c8c6c9",
+                    "primary-container": "#10b981",
+                    "on-secondary-container": "#b6b4b8",
+                    "secondary-fixed": "#e4e1e6",
+                    "inverse-surface": "#e5e1e4",
+                    "on-background": "#e5e1e4",
+                    "surface-tint": "#4edea3",
+                    "error": "#ffb4ab",
+                    "border-subtle": "#27272a",
+                    "error-container": "#93000a",
+                    "background": "#131315",
+                    "tertiary-container": "#a4a2a6",
+                    "on-tertiary-container": "#39393c",
+                    "inverse-on-surface": "#313032",
+                    "secondary-container": "#47464a",
+                    "primary-fixed": "#6ffbbe",
+                    "muted": "#a1a1aa",
+                    "on-secondary-fixed": "#1b1b1e",
+                    "ink": "#f4f4f5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "bento-gap-sm": "0.75rem",
+                    "bento-gap": "1rem",
+                    "grid-margin-mobile": "1rem",
+                    "grid-margin": "2rem",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "display-hero": ["Geist"],
+                    "label-metadata": ["JetBrains Mono"],
+                    "headline-section": ["Geist"],
+                    "body-muted": ["Geist"],
+                    "label-mono": ["JetBrains Mono"],
+                    "body-base": ["Geist"],
+                    "display-hero-mobile": ["Geist"]
+            },
+            "fontSize": {
+                    "display-hero": ["40px", {"lineHeight": "1", "letterSpacing": "-0.05em", "fontWeight": "600"}],
+                    "label-metadata": ["11px", {"lineHeight": "1", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "headline-section": ["24px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                    "body-muted": ["14px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "label-mono": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-base": ["14px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "display-hero-mobile": ["32px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #09090b; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #27272a; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-base">
+<!-- SideNavBar (Main App Shell) -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r border-outline-variant flex flex-col h-full py-grid-margin bg-surface dark:bg-surface z-50">
+<div class="px-6 mb-10">
+<h1 class="font-headline-section text-headline-section text-primary">Kinetic Noir</h1>
+<p class="text-[10px] font-label-metadata uppercase tracking-widest text-on-surface-variant opacity-60">Technical Directory</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 py-2 transition-colors hover:bg-surface-container-high text-on-surface-variant pl-4" href="#">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="font-body-base">AI Tools</span>
+</a>
+<a class="flex items-center gap-3 py-2 transition-colors hover:bg-surface-container-high text-on-surface-variant pl-4" href="#">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-body-base">Dev Tools</span>
+</a>
+<a class="flex items-center gap-3 py-2 transition-colors hover:bg-surface-container-high text-on-surface-variant pl-4" href="#">
+<span class="material-symbols-outlined">potted_plant</span>
+<span class="font-body-base">Design</span>
+</a>
+<a class="flex items-center gap-3 py-2 transition-colors hover:bg-surface-container-high text-on-surface-variant pl-4" href="#">
+<span class="material-symbols-outlined">bolt</span>
+<span class="font-body-base">Productivity</span>
+</a>
+</nav>
+<div class="mt-auto space-y-1">
+<a class="flex items-center gap-3 py-2 transition-colors hover:bg-surface-container-high text-on-surface-variant pl-4" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-base">Settings</span>
+</a>
+<a class="flex items-center gap-3 py-2 transition-colors hover:bg-surface-container-high text-primary border-l-2 border-primary pl-4 font-bold" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-body-base">Documentation</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar (Main Content Area Header) -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] z-40 bg-surface/80 backdrop-blur-md border-b border-outline-variant flex justify-between items-center px-grid-margin h-16">
+<div class="flex items-center bg-surface-container-lowest border border-border-subtle rounded px-3 py-1.5 w-96 group focus-within:border-primary transition-all">
+<span class="material-symbols-outlined text-on-surface-variant mr-2 text-sm">search</span>
+<input class="bg-transparent border-none outline-none text-body-base w-full focus:ring-0 placeholder:text-on-surface-variant/50" placeholder="Search documentation..." type="text"/>
+<span class="text-[10px] font-label-mono text-on-surface-variant/40 border border-border-subtle px-1 rounded">⌘K</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A professional close-up headshot of a software engineer with a neutral expression, captured in soft, cinematic lighting against a dark, minimalist architectural background. The image has a cool color grade with deep blacks and subtle highlights, reflecting a high-tech corporate modern aesthetic." src="https://lh3.googleusercontent.com/aida/AP1WRLtWZ3JcAkp3JhyZy3Mt89R8AqiL-mnmbhSjxO6XKwY8O19RBLG9yebk6VgdUY0gNFyehbwwDUpySmEuJvIiI7OLXZPSrW5L1aJwSgXIuchbHbDIM21-_wYpMRIKMRCjlSjMOZxc0z0htwjKPjyllSBOOyFaJpnx9uQspDWON9XPOfcMpBvbk5vilu2Iy6dxz8XJ8808v6De9X2E-nV_toOtD8t6IeCoM7h7ARdBjjRuEzqghsAdWCCK0g"/>
+</div>
+</div>
+</header>
+<!-- Main Content Layout -->
+<main class="ml-64 pt-16 flex min-h-screen">
+<!-- Article Navigation Sidebar (Secondary Sticky) -->
+<nav class="w-64 h-[calc(100vh-4rem)] sticky top-16 border-r border-border-subtle p-6 overflow-y-auto custom-scrollbar">
+<div class="space-y-8">
+<div>
+<h3 class="font-label-mono text-label-mono text-on-surface-variant/60 uppercase tracking-[0.2em] mb-4">Introduction</h3>
+<ul class="space-y-3">
+<li><a class="text-primary font-bold border-l-2 border-primary pl-3 block text-body-base" href="#getting-started">Getting Started</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors pl-3 block text-body-base" href="#core-concepts">Core Concepts</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors pl-3 block text-body-base" href="#architecture">Architecture</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-label-mono text-label-mono text-on-surface-variant/60 uppercase tracking-[0.2em] mb-4">Development</h3>
+<ul class="space-y-3">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors pl-3 block text-body-base" href="#installation">Installation</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors pl-3 block text-body-base" href="#contribution">Contribution Guide</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors pl-3 block text-body-base" href="#testing">Testing Protocols</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-label-mono text-label-mono text-on-surface-variant/60 uppercase tracking-[0.2em] mb-4">Reference</h3>
+<ul class="space-y-3">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors pl-3 block text-body-base" href="#api-docs">API Reference</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors pl-3 block text-body-base" href="#cli">CLI Commands</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors pl-3 block text-body-base" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<!-- Article Content -->
+<article class="flex-1 max-w-4xl px-12 py-10 pb-32">
+<nav class="flex items-center gap-2 text-label-metadata text-on-surface-variant/50 mb-6">
+<span>Docs</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span>Introduction</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-primary/70">Getting Started</span>
+</nav>
+<header class="mb-12">
+<h1 class="font-display-hero text-display-hero mb-4">Getting Started with Kinetic Noir</h1>
+<p class="text-lg text-on-surface-variant leading-relaxed max-w-2xl">
+                    Welcome to the Technical Directory. This guide will help you navigate the architecture, set up your development environment, and start contributing to the core toolkit.
+                </p>
+</header>
+<section class="mb-16" id="introduction">
+<h2 class="font-headline-section text-headline-section mb-6 pb-2 border-b border-border-subtle">Core Principles</h2>
+<div class="grid grid-cols-2 gap-bento-gap">
+<div class="bg-surface-container p-6 border border-border-subtle rounded-lg">
+<span class="material-symbols-outlined text-primary mb-4">speed</span>
+<h4 class="font-bold mb-2">Operational Speed</h4>
+<p class="text-body-muted text-on-surface-variant">Low-latency interactions and optimized data structures for maximum performance.</p>
+</div>
+<div class="bg-surface-container p-6 border border-border-subtle rounded-lg">
+<span class="material-symbols-outlined text-primary mb-4">visibility</span>
+<h4 class="font-bold mb-2">High Density</h4>
+<p class="text-body-muted text-on-surface-variant">Maximized information display without compromising visual hierarchy or clarity.</p>
+</div>
+</div>
+</section>
+<section class="mb-16" id="installation">
+<h2 class="font-headline-section text-headline-section mb-6 pb-2 border-b border-border-subtle">Quick Installation</h2>
+<p class="mb-4 text-on-surface-variant">Bootstrap the Kinetic Noir environment using our CLI tool. Ensure you have Node.js 18+ installed.</p>
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl overflow-hidden mb-6">
+<div class="flex items-center justify-between px-4 py-2 bg-surface-container border-b border-border-subtle">
+<div class="flex gap-1.5">
+<div class="w-2.5 h-2.5 rounded-full bg-error/40"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-primary/40"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-on-tertiary-container/40"></div>
+</div>
+<span class="text-[10px] font-label-mono text-on-surface-variant/40">bash</span>
+</div>
+<pre class="p-5 font-label-mono text-sm leading-relaxed text-primary/90 overflow-x-auto"><code><span class="text-on-surface-variant/40">$</span> npm install -g @kinetic-noir/cli
+<span class="text-on-surface-variant/40">$</span> kinetic init my-directory
+<span class="text-on-surface-variant/40">$</span> cd my-directory &amp;&amp; kinetic serve</code></pre>
+</div>
+<div class="bg-surface-container-low border-l-4 border-primary p-4 rounded-r-lg mb-8">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-sm">info</span>
+<span class="font-bold text-sm">Note</span>
+</div>
+<p class="text-body-muted text-on-surface-variant">
+                        The initialization process will automatically configure the Bento grid layout and Dark Mode tokens based on your system preferences.
+                    </p>
+</div>
+</section>
+<section class="mb-16" id="architecture">
+<h2 class="font-headline-section text-headline-section mb-6 pb-2 border-b border-border-subtle">Technical Architecture</h2>
+<p class="mb-8 text-on-surface-variant">Kinetic Noir is built on a modular atomic design system. Every tool in the directory is treated as an isolated "cell" within the larger bento-grid ecosystem.</p>
+<div class="relative w-full aspect-video rounded-xl overflow-hidden border border-border-subtle mb-8">
+<img alt="Server infrastructure" class="w-full h-full object-cover grayscale opacity-40" data-alt="A macro photograph of high-tech server circuit boards illuminated by neon emerald and cyan lights in a dark data center. The perspective is shallow-focus, emphasizing intricate wiring and glowing status LEDs. The overall mood is cold, professional, and technically advanced, aligning with a dark-tech aesthetic." src="https://lh3.googleusercontent.com/aida/AP1WRLtN3D0X3px3kaKQpiSaDwezMuGpPxsN2hsiyLUCNm--pc_saWzQX2irTooiZqTcYVQ57S90VjyaNQno04lWQBosu0Mn7_1Zs-zFPoIOOiVWJi4ULaAtuKcJ9kH1HbKQoNkcvjxmq7bfHTCOCcb5BuxJhHeDh4GEvkI5ubplzg37TKc0RFGaOz_UzsCUJ_0nmG-1S9Z_DmNGiwcTqKUGETtbMMH34dkKAUFqUDYrQfiGNCiXGkb1NmxurQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6">
+<span class="px-2 py-1 bg-primary text-on-primary font-label-mono text-[10px] rounded mb-2 inline-block">SYSTEM SCHEMATIC</span>
+<p class="text-on-surface font-bold">Node-based cell rendering engine v2.4</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-bento-gap">
+<div class="border border-border-subtle p-4 rounded bg-surface/50">
+<h5 class="text-primary font-bold text-xs uppercase tracking-wider mb-2">Layer 0</h5>
+<p class="text-sm text-on-surface-variant">Core Kernel: Handles state management and global theme tokens.</p>
+</div>
+<div class="border border-border-subtle p-4 rounded bg-surface/50">
+<h5 class="text-primary font-bold text-xs uppercase tracking-wider mb-2">Layer 1</h5>
+<p class="text-sm text-on-surface-variant">Service Mesh: Orchestrates inter-tool communication and data flow.</p>
+</div>
+<div class="border border-border-subtle p-4 rounded bg-surface/50">
+<h5 class="text-primary font-bold text-xs uppercase tracking-wider mb-2">Layer 2</h5>
+<p class="text-sm text-on-surface-variant">UI Canvas: Reactive Bento grid rendering and animation hooks.</p>
+</div>
+</div>
+</section>
+<footer class="pt-10 border-t border-border-subtle flex justify-between items-center text-on-surface-variant">
+<div class="flex flex-col">
+<span class="text-xs opacity-50 mb-1">Last updated</span>
+<span class="text-sm">October 24, 2023</span>
+</div>
+<div class="flex gap-4">
+<button class="flex items-center gap-2 px-4 py-2 border border-border-subtle rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-sm">thumb_up</span>
+<span class="text-sm font-bold">Helpful</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 border border-border-subtle rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-sm">edit</span>
+<span class="text-sm font-bold">Edit this page</span>
+</button>
+</div>
+</footer>
+</article>
+<!-- On this page secondary nav -->
+<aside class="w-48 h-[calc(100vh-4rem)] sticky top-16 p-8 hidden xl:block">
+<h4 class="font-label-mono text-[10px] text-on-surface-variant/40 uppercase tracking-[0.2em] mb-4">On this page</h4>
+<ul class="space-y-3 text-xs border-l border-border-subtle pl-4">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors block" href="#introduction">Core Principles</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors block" href="#installation">Quick Installation</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors block" href="#architecture">Technical Architecture</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors block" href="#system-schematic">System Schematic</a></li>
+</ul>
+</aside>
+</main>
+<!-- Contextual FAB (Hidden on Docs per guidelines, but kept as comment for logic) -->
+<!-- The FAB is suppressed here as this is a focused Documentation environment. -->
+<script>
+        // Simple smooth scroll logic for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add active state styling on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('aside nav a[href^="#"]');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-primary', 'font-bold', 'border-l-2', 'border-primary');
+                link.classList.add('text-on-surface-variant');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('text-primary', 'font-bold', 'border-l-2', 'border-primary');
+                    link.classList.remove('text-on-surface-variant');
+                }
+            });
+        });
+    </script>
+</body></html>

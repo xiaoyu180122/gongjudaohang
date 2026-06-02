@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Submit Tool | Kinetic Noir</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=JetBrains+Mono:wght@100..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#131315",
+                        "on-secondary-fixed-variant": "#47464a",
+                        "inverse-primary": "#006c49",
+                        "on-tertiary-fixed": "#1b1b1e",
+                        "outline-variant": "#3c4a42",
+                        "surface-container-lowest": "#0e0e10",
+                        "primary-fixed-dim": "#4edea3",
+                        "tertiary-fixed": "#e4e1e5",
+                        "on-tertiary": "#303033",
+                        "outline": "#86948a",
+                        "surface-container-highest": "#353437",
+                        "surface": "#131315",
+                        "surface-container-low": "#1c1b1d",
+                        "on-tertiary-fixed-variant": "#47464a",
+                        "on-surface": "#e5e1e4",
+                        "on-error": "#690005",
+                        "surface-variant": "#353437",
+                        "on-primary": "#003824",
+                        "on-error-container": "#ffdad6",
+                        "surface-bright": "#39393b",
+                        "surface-container": "#201f22",
+                        "on-surface-variant": "#bbcabf",
+                        "on-primary-container": "#00422b",
+                        "secondary": "#c8c5ca",
+                        "primary": "#4edea3",
+                        "on-primary-fixed-variant": "#005236",
+                        "tertiary": "#c8c6c9",
+                        "surface-container-high": "#2a2a2c",
+                        "on-secondary": "#303033",
+                        "accent-emerald": "#10b981",
+                        "secondary-fixed-dim": "#c8c5ca",
+                        "on-primary-fixed": "#002113",
+                        "tertiary-fixed-dim": "#c8c6c9",
+                        "primary-container": "#10b981",
+                        "on-secondary-container": "#b6b4b8",
+                        "secondary-fixed": "#e4e1e6",
+                        "inverse-surface": "#e5e1e4",
+                        "on-background": "#e5e1e4",
+                        "surface-tint": "#4edea3",
+                        "error": "#ffb4ab",
+                        "border-subtle": "#27272a",
+                        "error-container": "#93000a",
+                        "background": "#131315",
+                        "tertiary-container": "#a4a2a6",
+                        "on-tertiary-container": "#39393c",
+                        "inverse-on-surface": "#313032",
+                        "secondary-container": "#47464a",
+                        "primary-fixed": "#6ffbbe",
+                        "muted": "#a1a1aa",
+                        "on-secondary-fixed": "#1b1b1e",
+                        "ink": "#f4f4f5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "bento-gap-sm": "0.75rem",
+                        "bento-gap": "1rem",
+                        "grid-margin-mobile": "1rem",
+                        "grid-margin": "2rem",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "display-hero": ["Geist"],
+                        "label-metadata": ["JetBrains Mono"],
+                        "headline-section": ["Geist"],
+                        "body-muted": ["Geist"],
+                        "label-mono": ["JetBrains Mono"],
+                        "body-base": ["Geist"],
+                        "display-hero-mobile": ["Geist"]
+                    },
+                    "fontSize": {
+                        "display-hero": ["40px", {"lineHeight": "1", "letterSpacing": "-0.05em", "fontWeight": "600"}],
+                        "label-metadata": ["11px", {"lineHeight": "1", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "headline-section": ["24px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                        "body-muted": ["14px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "label-mono": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-base": ["14px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "display-hero-mobile": ["32px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #131315;
+            color: #e5e1e4;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .glass-panel {
+            background: rgba(9, 9, 11, 0.8);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="font-body-base text-body-base selection:bg-primary selection:text-surface">
+<!-- Left Side Navigation -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r border-outline-variant flex flex-col py-grid-margin bg-surface hidden md:flex">
+<div class="px-6 mb-12">
+<h1 class="font-headline-section text-headline-section text-primary">Kinetic Noir</h1>
+<p class="font-label-metadata text-label-metadata text-on-surface-variant mt-1">Technical Directory</p>
+</div>
+<nav class="flex-1 flex flex-col space-y-2">
+<a class="flex items-center space-x-3 text-on-surface-variant pl-4 hover:bg-surface-container-high transition-colors py-2" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span class="font-body-base text-body-base">AI Tools</span>
+</a>
+<a class="flex items-center space-x-3 text-on-surface-variant pl-4 hover:bg-surface-container-high transition-colors py-2" href="#">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span class="font-body-base text-body-base">Dev Tools</span>
+</a>
+<a class="flex items-center space-x-3 text-on-surface-variant pl-4 hover:bg-surface-container-high transition-colors py-2" href="#">
+<span class="material-symbols-outlined" data-icon="potted_plant">potted_plant</span>
+<span class="font-body-base text-body-base">Design</span>
+</a>
+<a class="flex items-center space-x-3 text-on-surface-variant pl-4 hover:bg-surface-container-high transition-colors py-2" href="#">
+<span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+<span class="font-body-base text-body-base">Productivity</span>
+</a>
+</nav>
+<div class="mt-auto px-4 flex flex-col space-y-2">
+<a class="flex items-center space-x-3 text-on-surface-variant pl-4 hover:bg-surface-container-high transition-colors py-2" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-base text-body-base">Settings</span>
+</a>
+<a class="flex items-center space-x-3 text-on-surface-variant pl-4 hover:bg-surface-container-high transition-colors py-2" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-body-base text-body-base">Documentation</span>
+</a>
+</div>
+</aside>
+<!-- Top Navigation -->
+<header class="fixed top-0 right-0 w-full md:w-[calc(100%-16rem)] z-50 glass-panel border-b border-outline-variant h-16 flex justify-between items-center px-grid-margin">
+<div class="flex items-center space-x-4 flex-1">
+<div class="relative w-full max-w-md hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg pl-10 pr-4 py-1.5 focus:outline-none focus:border-primary transition-all text-sm" placeholder="Search resources..." type="text"/>
+</div>
+</div>
+<div class="flex items-center space-x-6">
+<button class="relative text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-primary rounded-full border-2 border-surface"></span>
+</button>
+<div class="w-8 h-8 rounded-full border border-outline-variant bg-surface-container-highest overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLskJzMeVBhO8GqWPrFV7389GaKGjUharWezx57RAiIHd7XVnIiKxGVrN-ie44vAmgRibOXwh2TP7A9zEbsaT4taoJD0yqEZ095Ym_rsdPp52PhMQ3m2PsCqUNSV2ezpLhvEuUJwfGa9JZYWCj24SMai19KVH_sG39EGpdt11lxXzQC8RtdompEgJfFV8R1iXVTMqPqazvPzx30cOxDl6oLeaqM6Wq9OtNPNzbeUhbr15mXttQ566Wt15A"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="pt-24 pb-12 px-grid-margin-mobile md:px-grid-margin md:ml-64 min-h-screen">
+<div class="max-w-container-max mx-auto">
+<!-- Breadcrumbs -->
+<div class="flex items-center space-x-2 mb-8 font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest">
+<a class="hover:text-primary" href="#">Directory</a>
+<span class="material-symbols-outlined text-[10px]" data-icon="chevron_right">chevron_right</span>
+<span class="text-primary">Contribute Tool</span>
+</div>
+<!-- Header Section -->
+<div class="mb-12">
+<h2 class="font-display-hero text-display-hero mb-4">Contribute to the Index</h2>
+<p class="text-on-surface-variant max-w-2xl font-body-base text-body-base">
+                    Kinetic Noir is built by the community. Share high-performance technical tools, frameworks, and assets that define the modern developer stack.
+                </p>
+</div>
+<!-- Bento Layout Content -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-bento-gap">
+<!-- Form Column -->
+<div class="lg:col-span-7 space-y-bento-gap">
+<section class="bg-surface-container-low border border-border-subtle p-6 rounded-lg">
+<div class="mb-8 flex items-center justify-between">
+<h3 class="font-headline-section text-headline-section">01. Metadata</h3>
+<span class="font-label-mono text-label-mono text-primary px-2 py-1 bg-primary/10 rounded">Step 1 of 3</span>
+</div>
+<form class="space-y-6" id="submit-tool-form">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-mono text-label-mono text-on-surface-variant block">TOOL NAME</label>
+<input class="w-full bg-surface-dim border border-border-subtle focus:border-primary focus:ring-0 transition-colors py-3 px-4 text-on-surface font-body-base" id="input-name" placeholder="e.g. NoirGraph" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-mono text-label-mono text-on-surface-variant block">CATEGORY</label>
+<select class="w-full bg-surface-dim border border-border-subtle focus:border-primary focus:ring-0 transition-colors py-3 px-4 text-on-surface font-body-base appearance-none" id="input-category">
+<option value="AI Tools">AI Tools</option>
+<option value="Dev Tools">Dev Tools</option>
+<option value="Design">Design</option>
+<option value="Productivity">Productivity</option>
+</select>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-mono text-label-mono text-on-surface-variant block">GITHUB REPOSITORY URL</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm" data-icon="link">link</span>
+<input class="w-full bg-surface-dim border border-border-subtle focus:border-primary focus:ring-0 transition-colors py-3 pl-10 pr-4 text-on-surface font-body-base" id="input-github" placeholder="https://github.com/username/repository" type="url"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-mono text-label-mono text-on-surface-variant block">TECHNICAL DESCRIPTION</label>
+<textarea class="w-full bg-surface-dim border border-border-subtle focus:border-primary focus:ring-0 transition-colors py-3 px-4 text-on-surface font-body-base resize-none" id="input-desc" placeholder="Briefly describe the technical utility and stack..." rows="4"></textarea>
+</div>
+<div class="pt-4 flex items-center justify-between">
+<button class="text-on-surface-variant font-label-mono text-label-mono hover:text-primary transition-colors flex items-center space-x-2" type="button">
+<span class="material-symbols-outlined text-sm" data-icon="save">save</span>
+<span>SAVE AS DRAFT</span>
+</button>
+<button class="bg-primary text-surface py-3 px-10 font-label-mono text-label-mono font-bold hover:opacity-90 transition-opacity flex items-center space-x-2" type="submit">
+<span>SUBMIT TOOL</span>
+<span class="material-symbols-outlined text-sm" data-icon="rocket_launch">rocket_launch</span>
+</button>
+</div>
+</form>
+</section>
+<!-- Guidelines Card -->
+<div class="bg-surface-container-low border border-border-subtle p-6 rounded-lg grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="flex flex-col space-y-2">
+<span class="material-symbols-outlined text-primary" data-icon="verified_user">verified_user</span>
+<h4 class="font-label-mono text-label-mono text-on-surface">Verified Identity</h4>
+<p class="font-body-muted text-body-muted text-on-surface-variant">All submissions require a verified GitHub account linked to the repository.</p>
+</div>
+<div class="flex flex-col space-y-2">
+<span class="material-symbols-outlined text-primary" data-icon="terminal">terminal</span>
+<h4 class="font-label-mono text-label-mono text-on-surface">Technical Stack</h4>
+<p class="font-body-muted text-body-muted text-on-surface-variant">Prioritize tools with high performance and efficient memory management.</p>
+</div>
+<div class="flex flex-col space-y-2">
+<span class="material-symbols-outlined text-primary" data-icon="copyright">copyright</span>
+<h4 class="font-label-mono text-label-mono text-on-surface">Open Source</h4>
+<p class="font-body-muted text-body-muted text-on-surface-variant">We only index tools that follow MIT, Apache, or similar permissive licenses.</p>
+</div>
+</div>
+</div>
+<!-- Preview Column -->
+<div class="lg:col-span-5 space-y-bento-gap">
+<div class="sticky top-24">
+<div class="mb-4 flex items-center justify-between">
+<h3 class="font-label-mono text-label-mono text-on-surface-variant tracking-widest uppercase">Live Preview</h3>
+<div class="flex space-x-1">
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+</div>
+</div>
+<!-- Card Preview -->
+<div class="bg-surface-container border border-border-subtle rounded-lg overflow-hidden group hover:border-primary/50 transition-all duration-300">
+<div class="h-48 bg-surface-container-highest relative overflow-hidden">
+<img alt="Preview visual" class="w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="A macro cinematic shot of a futuristic server room with emerald glowing data lines pulsing through dark obsidian panels. The lighting is dramatic and moody, with high contrast between deep shadows and sharp, neon-green highlights. The style is hyper-technical and minimalist, conveying advanced computational power and sleek, dark-tech industrial design." id="preview-img" src="https://lh3.googleusercontent.com/aida/AP1WRLsdI52kslwPE8OOH_3njfy2qiubTtyHpuD-wcR2pXPrMNorzW4sDK8wvj_kOJvON5CaZalJCousciy0C1cByKDwGkrXzFHCWeLcvY2fDdNTNgTnP4nMBQpTyuu5PNYlRmRmKDpswbXDksLQ_K7twuKyjtzPaC_cc_2uwS-RdQHay56ezAIWEagKS29XzbPIUCcUXZ0DSOs-zP_oVIGp0mGA-Ooqmv2h1DrjvxpeioyLqscrdzywwOHlykU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+<div class="absolute top-4 left-4">
+<span class="bg-surface-dim/80 backdrop-blur-sm border border-border-subtle px-3 py-1 rounded-full font-label-mono text-label-metadata text-on-surface" id="preview-tag">CATEGORY</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-headline-section text-headline-section text-on-surface mb-1" id="preview-name">Tool Name</h4>
+<p class="font-label-mono text-label-metadata text-primary">v1.0.4-alpha</p>
+</div>
+<div class="flex space-x-2">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors" data-icon="star">star</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors" data-icon="share">share</span>
+</div>
+</div>
+<p class="font-body-base text-body-base text-on-surface-variant line-clamp-3 mb-6" id="preview-description">
+                                    The technical description you provide will appear here. This preview updates in real-time to show how your tool will be presented to the technical community.
+                                </p>
+<div class="flex items-center justify-between pt-4 border-t border-border-subtle">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border border-surface bg-surface-container-highest"></div>
+<div class="w-6 h-6 rounded-full border border-surface bg-primary/20 flex items-center justify-center text-[10px] font-bold">+12</div>
+</div>
+<button class="font-label-mono text-label-mono text-primary flex items-center space-x-1 group/btn">
+<span>VIEW REPO</span>
+<span class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Info Card -->
+<div class="mt-bento-gap bg-surface-dim border border-primary/20 p-6 rounded-lg relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-6xl" data-icon="info">info</span>
+</div>
+<h4 class="font-label-mono text-label-mono text-primary mb-3">CURATION POLICY</h4>
+<p class="font-body-muted text-body-muted text-on-surface-variant leading-relaxed">
+                                Our editorial team reviews submissions within 24-48 hours. Tools are ranked based on GitHub activity, code quality, and community utility. High-performance tools may be featured in our weekly "Technical Pulse" newsletter.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Simple Footer (Mobile only/Responsive) -->
+<footer class="md:hidden fixed bottom-0 left-0 w-full h-16 bg-surface border-t border-outline-variant flex items-center justify-around px-4 z-50">
+<button class="text-primary flex flex-col items-center">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="text-[10px] font-label-mono">SUBMIT</span>
+</button>
+<button class="text-on-surface-variant flex flex-col items-center">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="text-[10px] font-label-mono">EXPLORE</span>
+</button>
+<button class="text-on-surface-variant flex flex-col items-center">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[10px] font-label-mono">PROFILE</span>
+</button>
+</footer>
+<script>
+        // Live Preview Logic
+        const inputName = document.getElementById('input-name');
+        const inputCategory = document.getElementById('input-category');
+        const inputDesc = document.getElementById('input-desc');
+
+        const previewName = document.getElementById('preview-name');
+        const previewTag = document.getElementById('preview-tag');
+        const previewDescription = document.getElementById('preview-description');
+
+        inputName.addEventListener('input', (e) => {
+            previewName.textContent = e.target.value || 'Tool Name';
+        });
+
+        inputCategory.addEventListener('change', (e) => {
+            previewTag.textContent = e.target.value.toUpperCase();
+        });
+
+        inputDesc.addEventListener('input', (e) => {
+            previewDescription.textContent = e.target.value || 'The technical description you provide will appear here. This preview updates in real-time to show how your tool will be presented to the technical community.';
+        });
+
+        // Form Submission Interaction
+        const form = document.getElementById('submit-tool-form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            
+            btn.disabled = true;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin" data-icon="progress_activity">progress_activity</span> <span>PROCESSING...</span>';
+            
+            setTimeout(() => {
+                btn.classList.replace('bg-primary', 'bg-accent-emerald');
+                btn.innerHTML = '<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span> <span>SUCCESSFUL</span>';
+                
+                setTimeout(() => {
+                    btn.disabled = false;
+                    btn.classList.replace('bg-accent-emerald', 'bg-primary');
+                    btn.innerHTML = originalText;
+                    form.reset();
+                    // Reset preview too
+                    previewName.textContent = 'Tool Name';
+                    previewTag.textContent = 'CATEGORY';
+                    previewDescription.textContent = 'The technical description you provide will appear here. This preview updates in real-time to show how your tool will be presented to the technical community.';
+                }, 2000);
+            }, 1500);
+        });
+
+        // Atmosphere - Subtle canvas noise or movement if desired
+        // (Keeping it minimal for technical focus)
+    </script>
+</body></html>

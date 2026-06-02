@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kinetic Noir - Command Search</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Custom Scrollbar for the technical aesthetic */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #131315;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #27272a;
+      border-radius: 2px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #4edea3;
+    }
+    .search-glow {
+      box-shadow: 0 0 20px -5px rgba(78, 222, 163, 0.15);
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-error": "#690005",
+            "on-tertiary-fixed-variant": "#47464a",
+            "surface-bright": "#39393b",
+            "surface": "#131315",
+            "surface-container-highest": "#353437",
+            "surface-variant": "#353437",
+            "inverse-surface": "#e5e1e4",
+            "secondary": "#c8c5ca",
+            "surface-container-high": "#2a2a2c",
+            "on-primary-fixed": "#002113",
+            "border-subtle": "#27272a",
+            "on-tertiary": "#303033",
+            "on-secondary": "#303033",
+            "inverse-on-surface": "#313032",
+            "on-primary-container": "#00422b",
+            "background": "#131315",
+            "inverse-primary": "#006c49",
+            "on-surface": "#e5e1e4",
+            "primary": "#4edea3",
+            "on-error-container": "#ffdad6",
+            "on-secondary-fixed": "#1b1b1e",
+            "ink": "#f4f4f5",
+            "error": "#ffb4ab",
+            "secondary-container": "#47464a",
+            "secondary-fixed-dim": "#c8c5ca",
+            "primary-fixed-dim": "#4edea3",
+            "tertiary-fixed": "#e4e1e5",
+            "primary-container": "#10b981",
+            "tertiary": "#c8c6c9",
+            "primary-fixed": "#6ffbbe",
+            "on-background": "#e5e1e4",
+            "accent-emerald": "#10b981",
+            "on-secondary-fixed-variant": "#47464a",
+            "surface-tint": "#4edea3",
+            "tertiary-fixed-dim": "#c8c6c9",
+            "surface-container-low": "#1c1b1d",
+            "secondary-fixed": "#e4e1e6",
+            "on-tertiary-fixed": "#1b1b1e",
+            "outline-variant": "#3c4a42",
+            "surface-container": "#201f22",
+            "tertiary-container": "#a4a2a6",
+            "on-primary-fixed-variant": "#005236",
+            "muted": "#a1a1aa",
+            "surface-dim": "#131315",
+            "on-surface-variant": "#bbcabf",
+            "surface-container-lowest": "#0e0e10",
+            "on-tertiary-container": "#39393c",
+            "error-container": "#93000a",
+            "on-primary": "#003824",
+            "outline": "#86948a",
+            "on-secondary-container": "#b6b4b8"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "fontFamily": {
+            "display-hero": ["Geist"],
+            "headline-section": ["Geist"],
+            "label-metadata": ["JetBrains Mono"],
+            "body-base": ["Geist"],
+            "label-mono": ["JetBrains Mono"]
+          },
+          "fontSize": {
+            "headline-section": ["24px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+            "body-base": ["14px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+            "label-metadata": ["11px", {"lineHeight": "1", "letterSpacing": "0em", "fontWeight": "400"}],
+            "label-mono": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface font-body-base overflow-hidden">
+<!-- SideNavBar Anchor -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r border-outline-variant bg-surface flex flex-col py-8 z-[60]">
+<div class="px-8 mb-10">
+<h1 class="font-headline-section text-headline-section text-primary">Kinetic Noir</h1>
+<p class="font-label-metadata text-label-metadata text-on-surface-variant mt-1">Technical Directory</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 text-on-surface-variant pl-4 py-2 hover:bg-surface-container-high transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">smart_toy</span>
+<span class="font-body-base">AI Tools</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant pl-4 py-2 hover:bg-surface-container-high transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+<span class="font-body-base">Dev Tools</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant pl-4 py-2 hover:bg-surface-container-high transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">potted_plant</span>
+<span class="font-body-base">Design</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant pl-4 py-2 hover:bg-surface-container-high transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+<span class="font-body-base">Productivity</span>
+</a>
+</nav>
+<div class="mt-auto px-4 space-y-1">
+<a class="flex items-center gap-3 text-on-surface-variant pl-4 py-2 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="font-body-base">Settings</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant pl-4 py-2 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">menu_book</span>
+<span class="font-body-base">Documentation</span>
+</a>
+<div class="mt-4 flex items-center gap-3 pl-4 pt-4 border-t border-outline-variant/30">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="User profile" data-alt="A close-up portrait of a professional developer with a focused expression, set against a dark, moody background with subtle green neon highlights. The lighting is low-key and dramatic, emphasizing textures and a high-tech atmosphere. The image is minimalist and polished, fitting a dark-tech corporate aesthetic." src="https://lh3.googleusercontent.com/aida/AP1WRLtMa2kqx0Rvq7-7pj4R57G1ca0eoSBqD5Ijq-t27YcEt3JR_pC88ksNmZWV5WTcVyY7X8qvrcOWSwHZOusGyYoLvnaf57QIAbLiI5ivnFi4O2dNitsFB9J9NRSB0ZpSOHROXQb7_83xMWIPzFawfSuBqsaFWX_aZmZeVXfNP2Tgi55LtIlux-GeZ6ldSaXfQ07SPF6NP6-W6uoRrv-k2EtW12Tsql9XQ7faulgMu1bzD6efVio8ciSXmw"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-mono text-label-mono text-on-surface">Admin User</span>
+<span class="font-label-metadata text-label-metadata text-on-surface-variant">Pro Plan</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar Anchor -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 bg-surface/80 backdrop-blur-md border-b border-outline-variant z-50 flex justify-between items-center px-8">
+<div class="flex-1 flex items-center">
+<div class="relative w-full max-w-md group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg py-1.5 pl-10 pr-4 text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-primary transition-all font-body-base" placeholder="Search resources... (Cmd + K)" type="text" value="Deployment"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Canvas / Search Overlay -->
+<main class="ml-64 pt-16 h-screen overflow-hidden bg-surface-container-lowest">
+<div class="h-full flex flex-col p-8 max-w-5xl mx-auto">
+<!-- Search Header & Stats -->
+<div class="flex items-end justify-between mb-8 border-b border-outline-variant pb-6">
+<div>
+<h2 class="font-headline-section text-headline-section text-on-surface">Search Results</h2>
+<p class="font-body-base text-on-surface-variant mt-1">Showing 12 results for <span class="text-primary font-label-mono">"Deployment"</span></p>
+</div>
+<div class="flex gap-2">
+<span class="px-2 py-1 bg-surface-container border border-outline-variant rounded font-label-mono text-[10px] text-on-surface-variant uppercase">Esc to close</span>
+<span class="px-2 py-1 bg-surface-container border border-outline-variant rounded font-label-mono text-[10px] text-on-surface-variant uppercase">Tab to navigate</span>
+</div>
+</div>
+<!-- Bento Grid Style Results Scroll Area -->
+<div class="flex-1 overflow-y-auto pr-4 space-y-10 pb-20">
+<!-- Category: Tools -->
+<section>
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary text-[18px]">construction</span>
+<h3 class="font-label-mono text-label-mono text-primary tracking-widest uppercase">Tools</h3>
+<div class="h-[1px] flex-1 bg-outline-variant/30 ml-2"></div>
+</div>
+<div class="grid grid-cols-1 gap-2">
+<!-- Active/Hovered Item -->
+<div class="group bg-surface-container-high border border-primary/40 rounded p-3 flex items-center justify-between search-glow transition-all">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-primary">rocket_launch</span>
+</div>
+<div>
+<h4 class="font-body-base font-bold text-on-surface">Vercel Edge Deployment</h4>
+<p class="font-label-metadata text-on-surface-variant">Global infrastructure for low-latency web apps.</p>
+</div>
+</div>
+<div class="flex gap-2 opacity-100 transition-opacity">
+<button class="bg-primary text-background font-label-mono px-3 py-1.5 rounded text-[11px] font-bold hover:opacity-90 active:scale-95 transition-all">LAUNCH</button>
+<button class="border border-outline-variant hover:border-primary/50 text-on-surface font-label-mono px-3 py-1.5 rounded text-[11px] transition-all">DOCS</button>
+<button class="text-on-surface-variant hover:text-primary p-1.5">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</button>
+</div>
+</div>
+<!-- Regular Item -->
+<div class="group bg-surface-container-low border border-outline-variant/50 hover:border-outline hover:bg-surface-container-high rounded p-3 flex items-center justify-between transition-all">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-surface-container-highest border border-outline-variant flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">cloud_sync</span>
+</div>
+<div>
+<h4 class="font-body-base text-on-surface group-hover:text-primary transition-colors">CI/CD Pipeline Manager</h4>
+<p class="font-label-metadata text-on-surface-variant">Automated testing and multi-cloud deployment orchestrator.</p>
+</div>
+</div>
+<div class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-primary text-background font-label-mono px-3 py-1.5 rounded text-[11px] font-bold transition-all">LAUNCH</button>
+<button class="border border-outline-variant hover:border-primary/50 text-on-surface font-label-mono px-3 py-1.5 rounded text-[11px] transition-all">DOCS</button>
+<button class="text-on-surface-variant hover:text-primary p-1.5">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Category: Documentation -->
+<section>
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary text-[18px]">description</span>
+<h3 class="font-label-mono text-label-mono text-primary tracking-widest uppercase">Docs</h3>
+<div class="h-[1px] flex-1 bg-outline-variant/30 ml-2"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+<!-- Doc Card 1 -->
+<div class="bg-surface border border-outline-variant/50 hover:border-primary/40 p-4 rounded-lg flex flex-col gap-3 group transition-all cursor-pointer">
+<div class="flex justify-between items-start">
+<div class="bg-secondary-container px-2 py-0.5 rounded text-[10px] font-label-mono text-secondary">GUIDE</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors text-[20px]">open_in_new</span>
+</div>
+<div>
+<h4 class="font-body-base font-bold text-on-surface group-hover:text-primary transition-colors">Zero-Downtime Deployment Strategies</h4>
+<p class="font-body-muted text-on-surface-variant mt-1 line-clamp-2">Learn how to implement blue-green and canary deployments using our internal CLI tools.</p>
+</div>
+<div class="flex items-center gap-2 mt-2">
+<span class="text-[10px] font-label-mono text-on-surface-variant">REVISED: 2D AGO</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-[10px] font-label-mono text-on-surface-variant">8 MIN READ</span>
+</div>
+</div>
+<!-- Doc Card 2 -->
+<div class="bg-surface border border-outline-variant/50 hover:border-primary/40 p-4 rounded-lg flex flex-col gap-3 group transition-all cursor-pointer">
+<div class="flex justify-between items-start">
+<div class="bg-secondary-container px-2 py-0.5 rounded text-[10px] font-label-mono text-secondary">API REF</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors text-[20px]">open_in_new</span>
+</div>
+<div>
+<h4 class="font-body-base font-bold text-on-surface group-hover:text-primary transition-colors">REST API: /deployments/v2</h4>
+<p class="font-body-muted text-on-surface-variant mt-1 line-clamp-2">Specification for managing application lifecycles and environment rollbacks programmatically.</p>
+</div>
+<div class="flex items-center gap-2 mt-2">
+<span class="text-[10px] font-label-mono text-on-surface-variant">VERSION: 2.4.1</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-[10px] font-label-mono text-on-surface-variant text-primary">STABLE</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Category: Assets -->
+<section>
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary text-[18px]">inventory_2</span>
+<h3 class="font-label-mono text-label-mono text-primary tracking-widest uppercase">Assets</h3>
+<div class="h-[1px] flex-1 bg-outline-variant/30 ml-2"></div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<!-- Asset 1 -->
+<div class="bg-surface border border-outline-variant/50 p-2 rounded group cursor-pointer hover:bg-surface-container-high transition-all">
+<div class="aspect-square bg-surface-container-highest rounded mb-2 overflow-hidden flex items-center justify-center border border-outline-variant">
+<img alt="Deployment Illustration" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" data-alt="A highly detailed 3D abstract rendering of a server cluster interconnected by glowing emerald green fiber optic lines. The scene is set in a dark, infinite void with a shallow depth of field. The lighting is focused on the crystalline structures of the nodes, reflecting a sleek, futuristic tech aesthetic in deep blacks and vibrant greens." src="https://lh3.googleusercontent.com/aida/AP1WRLu3fuwjYmSxMLmLrfTliV2hyFPlUN5TER_s-_D7ajrA7xEzcLSJJw1DoPk65xZ1fmZSXgN4DZxuGI6l8KiksX-GS2yiQqHK7I8uYvwjdP-9NQmSvHL0OJ5NuifAeMw6zmOsTpaIThvbZRiDVpajb7T6lmBRrz37p8hfw5AANL920iT4BGvHkBOxRNfxDySsnrO2Ru60T-tQT94p66xRFotsuqv_ipGl-T3yqjBAMPe6BffSe23mpmHzNj4"/>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-mono text-[10px] text-on-surface truncate">deploy_hero_3d.png</span>
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant group-hover:text-primary">download</span>
+</div>
+</div>
+<!-- Asset 2 -->
+<div class="bg-surface border border-outline-variant/50 p-2 rounded group cursor-pointer hover:bg-surface-container-high transition-all">
+<div class="aspect-square bg-surface-container-highest rounded mb-2 overflow-hidden flex items-center justify-center border border-outline-variant">
+<img alt="Workflow Diagram" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" data-alt="A minimalist architectural blueprint of a software deployment workflow, featuring clean white lines and vector symbols on a deep charcoal background. The design is schematic and precise, with emerald green accents highlighting the path from code commit to production. The mood is clinical, professional, and organized." src="https://lh3.googleusercontent.com/aida/AP1WRLu96nftZ-nVgw61GwhaacnioRhj8G86ZYw4xNKH2Y2G84umGIF6To5yq5yJhyy6baq9YgKoANUbxA9Is7nzUz9zB6CTKwggvIBAoHtSf15_umVoFBte_xln92DgNXhIsDl9IBZGRjdV1MRfw1gfN6-eEcj4tqkFokUkAQT9ePFMxl_q4KhQj-Rd5qqKuRiG4LEHcKhYUzrcAymKjEUBFpODJODCBuuWRVOlzDXQ-pLtBbe0tOk2YtKihfY"/>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-mono text-[10px] text-on-surface truncate">flow_schema.svg</span>
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant group-hover:text-primary">download</span>
+</div>
+</div>
+<!-- Asset 3 -->
+<div class="bg-surface border border-outline-variant/50 p-2 rounded group cursor-pointer hover:bg-surface-container-high transition-all">
+<div class="aspect-square bg-surface-container-highest rounded mb-2 overflow-hidden flex items-center justify-center border border-outline-variant">
+<img alt="Hardware Icon" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" data-alt="Macro photography of a sleek, dark-toned circuit board with tiny LED indicators glowing in soft emerald green. The lighting is moody and directional, casting long shadows across the technological components. The aesthetic is extremely high-density and precise, conveying a sense of advanced computational power and security." src="https://lh3.googleusercontent.com/aida/ADBb0uhzRx6vYFcY7EYOSJh9TPVAVecGfSKiRNirY3ZGOPntg8KOzJ4nGYhIB1uObfHq-bou_OSXK-9wrx2-t_9bZKcfzPoI4V0OiaNeCWDfQyj8zfp_YJG2ewk0y8kKRBflxLaAvQr76L9kPRq2qkmxQhhsW1uSM4YwcVftu7-WoABCdxqPhDAgEqR53q6TV3Q1sNI879Je_buWg4i9EZoTXkWyBP0O-QzHqMxQtghjluJdeC3w15n5US5pvg"/>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-mono text-[10px] text-on-surface truncate">edge_node_icon.pkg</span>
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant group-hover:text-primary">download</span>
+</div>
+</div>
+<!-- Asset 4 -->
+<div class="bg-surface border border-outline-variant/50 p-2 rounded group cursor-pointer hover:bg-surface-container-high transition-all">
+<div class="aspect-square bg-surface-container-highest rounded mb-2 overflow-hidden flex items-center justify-center border border-outline-variant">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-[48px] text-on-surface-variant/30">video_library</span>
+<span class="font-label-metadata text-[10px] text-on-surface-variant">Preview Unavailable</span>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-mono text-[10px] text-on-surface truncate">release_reel.mp4</span>
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant group-hover:text-primary">download</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Interactive Keyboard Interaction Overlay (Visual Only) -->
+<div class="fixed bottom-8 right-8 flex gap-2 pointer-events-none opacity-50">
+<div class="bg-surface-container border border-outline-variant rounded px-2 py-1 flex items-center gap-1">
+<span class="font-label-mono text-[10px] text-on-surface">⌘</span>
+<span class="font-label-mono text-[10px] text-on-surface">K</span>
+</div>
+<div class="bg-surface-container border border-outline-variant rounded px-2 py-1 flex items-center gap-1">
+<span class="font-label-mono text-[10px] text-on-surface">ESC</span>
+</div>
+</div>
+<script>
+    // Subtle interactivity for search feedback
+    document.addEventListener('keydown', (e) => {
+      // Simulate close on ESC
+      if (e.key === 'Escape') {
+        console.log('Search Overlay Requested Close');
+        // Visual feedback
+        document.body.style.opacity = '0.5';
+        setTimeout(() => document.body.style.opacity = '1', 100);
+      }
+    });
+
+    // Add subtle hover sound or haptic feedback simulation
+    const searchItems = document.querySelectorAll('.group');
+    searchItems.forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        // Aesthetic hover interaction logic
+      });
+    });
+  </script>
+</body></html>

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kinetic Noir | Productivity Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Geist:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #09090b; /* Zinc 950 from guidance */
+            color: #f4f4f5;
+        }
+        .bento-card {
+            background-color: #18181b; /* Level 1: Zinc 900 */
+            border: 1px solid #27272a; /* Zinc 800 */
+            transition: all 0.2s ease-in-out;
+        }
+        .bento-card:hover {
+            background-color: rgba(39, 39, 42, 0.5); /* Zinc 800/50 */
+            border-color: #3f3f46; /* Zinc 700 */
+        }
+        .bento-card:hover .icon-tint {
+            color: #10b981; /* Emerald 500 */
+        }
+        .glass-header {
+            background-color: rgba(9, 9, 11, 0.8);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-container": "#47464a",
+                      "surface-container-high": "#2a2a2c",
+                      "on-primary-container": "#00422b",
+                      "on-surface-variant": "#bbcabf",
+                      "accent-emerald": "#10b981",
+                      "surface-bright": "#39393b",
+                      "ink": "#f4f4f5",
+                      "on-primary": "#003824",
+                      "inverse-surface": "#e5e1e4",
+                      "on-tertiary-fixed": "#1b1b1e",
+                      "on-tertiary-container": "#39393c",
+                      "background": "#131315",
+                      "primary-fixed": "#6ffbbe",
+                      "primary-container": "#10b981",
+                      "inverse-on-surface": "#313032",
+                      "outline-variant": "#3c4a42",
+                      "surface-dim": "#131315",
+                      "surface-container-low": "#1c1b1d",
+                      "surface": "#131315",
+                      "on-primary-fixed-variant": "#005236",
+                      "on-error-container": "#ffdad6",
+                      "tertiary-fixed": "#e4e1e5",
+                      "surface-variant": "#353437",
+                      "tertiary-fixed-dim": "#c8c6c9",
+                      "error-container": "#93000a",
+                      "secondary-fixed-dim": "#c8c5ca",
+                      "on-secondary-fixed": "#1b1b1e",
+                      "on-error": "#690005",
+                      "on-tertiary": "#303033",
+                      "on-surface": "#e5e1e4",
+                      "on-background": "#e5e1e4",
+                      "surface-container-lowest": "#0e0e10",
+                      "inverse-primary": "#006c49",
+                      "tertiary-container": "#a4a2a6",
+                      "tertiary": "#c8c6c9",
+                      "secondary-fixed": "#e4e1e6",
+                      "on-primary-fixed": "#002113",
+                      "on-secondary-container": "#b6b4b8",
+                      "muted": "#a1a1aa",
+                      "surface-tint": "#4edea3",
+                      "secondary": "#c8c5ca",
+                      "error": "#ffb4ab",
+                      "border-subtle": "#27272a",
+                      "primary": "#4edea3",
+                      "on-tertiary-fixed-variant": "#47464a",
+                      "surface-container": "#201f22",
+                      "outline": "#86948a",
+                      "surface-container-highest": "#353437",
+                      "on-secondary": "#303033",
+                      "on-secondary-fixed-variant": "#47464a",
+                      "primary-fixed-dim": "#4edea3"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "grid-margin-mobile": "1rem",
+                      "grid-margin": "2rem",
+                      "bento-gap": "1rem",
+                      "container-max": "1280px",
+                      "bento-gap-sm": "0.75rem"
+              },
+              "fontFamily": {
+                      "body-muted": ["Geist"],
+                      "label-mono": ["JetBrains Mono"],
+                      "label-metadata": ["JetBrains Mono"],
+                      "headline-section": ["Geist"],
+                      "display-hero-mobile": ["Geist"],
+                      "display-hero": ["Geist"],
+                      "body-base": ["Geist"]
+              },
+              "fontSize": {
+                      "body-muted": ["14px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                      "label-mono": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "label-metadata": ["11px", {"lineHeight": "1", "letterSpacing": "0em", "fontWeight": "400"}],
+                      "headline-section": ["24px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                      "display-hero-mobile": ["32px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "600"}],
+                      "display-hero": ["40px", {"lineHeight": "1", "letterSpacing": "-0.05em", "fontWeight": "600"}],
+                      "body-base": ["14px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-base selection:bg-primary selection:text-on-primary">
+<!-- SideNavBar Component -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r border-outline-variant flex flex-col py-grid-margin bg-surface z-50">
+<div class="px-6 mb-10">
+<h1 class="font-headline-section text-headline-section text-primary tracking-tight font-extrabold">Kinetic Noir</h1>
+<p class="text-label-metadata text-muted uppercase tracking-widest mt-1">Technical Directory</p>
+</div>
+<nav class="flex-grow space-y-1">
+<!-- AI Tools -->
+<a class="flex items-center gap-3 py-3 px-6 text-on-surface-variant hover:bg-surface-container-high transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] icon-tint">smart_toy</span>
+<span class="font-body-base">AI Tools</span>
+</a>
+<!-- Dev Tools -->
+<a class="flex items-center gap-3 py-3 px-6 text-on-surface-variant hover:bg-surface-container-high transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] icon-tint">terminal</span>
+<span class="font-body-base">Dev Tools</span>
+</a>
+<!-- Design -->
+<a class="flex items-center gap-3 py-3 px-6 text-on-surface-variant hover:bg-surface-container-high transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] icon-tint">potted_plant</span>
+<span class="font-body-base">Design</span>
+</a>
+<!-- Productivity (Active) -->
+<a class="flex items-center gap-3 py-3 px-2 text-primary border-l-2 border-primary font-bold bg-surface-container-low transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] ml-4">bolt</span>
+<span class="font-body-base">Productivity</span>
+</a>
+</nav>
+<div class="mt-auto px-6 space-y-4 pt-6 border-t border-outline-variant">
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+<span class="text-label-mono">Settings</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">menu_book</span>
+<span class="text-label-mono">Documentation</span>
+</a>
+<div class="flex items-center gap-3 pt-4">
+<img alt="User profile" class="w-8 h-8 rounded-full border border-outline-variant" src="https://lh3.googleusercontent.com/aida/AP1WRLujUTVCBnQvL0Oiq81faoNVsP5aPKr70yBtgrBzDUKjiQWwCkMm19wPHwcJW8EAonFljhmcmLU6NrAnnHleWZTIWutPYDwusjNabWsmVJAcicDc46xnsTaVrbdhZZh135ypoLWXEkQQwrnRs7kc0YQSzk116BXxystCE0qI-WoTZpyG4HHMz5dQUBcM-KqqsVJZNm79noQqkutudQKwCwPOw4hIbAnhyvW7j_8RGD8SNZGZrxeVLRWEz5Y"/>
+<div class="flex flex-col">
+<span class="text-label-mono text-on-surface text-[11px]">ADMIN_ROOT</span>
+<span class="text-label-metadata text-muted">v2.4.0-stable</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopAppBar Component (Integrated) -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 glass-header border-b border-outline-variant flex justify-between items-center px-grid-margin z-40">
+<div class="flex items-center w-1/2">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-muted text-[18px]">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg py-1.5 pl-10 pr-4 text-body-base focus:border-primary focus:ring-0 transition-all placeholder:text-muted/50" placeholder="Search workflow tools..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-on-surface-variant hover:text-primary transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute -top-1 -right-1 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-64 pt-24 pb-12 px-grid-margin min-h-screen">
+<div class="max-w-container-max mx-auto">
+<!-- Hero Section -->
+<section class="mb-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="h-[1px] w-8 bg-primary"></span>
+<span class="text-label-mono text-primary uppercase tracking-widest">Efficiency Terminal</span>
+</div>
+<h2 class="font-display-hero text-display-hero text-on-surface">Engineering Workflow &amp; Productivity</h2>
+<p class="text-body-muted text-muted max-w-2xl mt-3">Optimize your technical stack with precision-engineered management tools and automation workflows. High-density coordination for high-performance teams.</p>
+</div>
+<div class="flex gap-4">
+<div class="bento-card p-4 flex flex-col items-center justify-center min-w-[120px]">
+<span class="text-label-metadata text-muted uppercase">Avg. Save</span>
+<span class="text-headline-section font-bold text-primary">12.4h</span>
+<span class="text-label-metadata text-muted">Per Sprint</span>
+</div>
+<button class="bg-primary text-on-primary font-bold px-6 py-3 rounded-lg flex items-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">add</span>
+                            New Integration
+                        </button>
+</div>
+</div>
+<!-- Bento Grid Content -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-bento-gap">
+<!-- Featured: Project Management (Large) -->
+<div class="md:col-span-8 bento-card p-6 flex flex-col">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="font-headline-section text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">account_tree</span>
+                                    Project Management
+                                </h3>
+<p class="text-body-muted text-muted">Agile task orchestration for technical roadmaps.</p>
+</div>
+<span class="bg-surface-container-high text-label-mono px-3 py-1 rounded-full border border-outline-variant">4 Active Tools</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-auto">
+<div class="p-4 border border-outline-variant bg-surface-container-lowest rounded hover:border-primary/50 transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<span class="font-bold">Linear Hub</span>
+<span class="text-label-mono text-accent-emerald text-[10px] bg-primary/10 px-2 py-0.5 rounded">SYNCED</span>
+</div>
+<p class="text-label-metadata text-muted mb-3 leading-relaxed">Streamlined issue tracking for high-velocity teams. 99% task completion rate.</p>
+<div class="flex flex-wrap gap-2">
+<span class="text-[10px] font-mono bg-zinc-800 px-2 py-0.5 text-zinc-400">Notion Native</span>
+<span class="text-[10px] font-mono bg-zinc-800 px-2 py-0.5 text-zinc-400">SaaS</span>
+</div>
+</div>
+<div class="p-4 border border-outline-variant bg-surface-container-lowest rounded hover:border-primary/50 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="font-bold">Jira Enterprise</span>
+<span class="material-symbols-outlined text-muted text-[16px]">open_in_new</span>
+</div>
+<p class="text-label-metadata text-muted mb-3 leading-relaxed">Complex workflow mapping with deep Bitbucket/GitHub hooks.</p>
+<div class="flex flex-wrap gap-2">
+<span class="text-[10px] font-mono bg-zinc-800 px-2 py-0.5 text-zinc-400">SSO Enabled</span>
+<span class="text-[10px] font-mono bg-zinc-800 px-2 py-0.5 text-zinc-400">Legacy Sync</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Automation Widget -->
+<div class="md:col-span-4 bento-card p-6 bg-gradient-to-br from-surface to-surface-container-low overflow-hidden relative">
+<div class="relative z-10">
+<h3 class="font-headline-section text-on-surface mb-2">Automation</h3>
+<div class="space-y-4 mt-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">auto_fix_high</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between">
+<span class="text-label-mono text-on-surface">Zapier Flow</span>
+<span class="text-label-metadata text-primary">94% EFF</span>
+</div>
+<div class="w-full bg-zinc-800 h-1 mt-1">
+<div class="bg-primary h-full w-[94%]"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-secondary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-muted">sync_alt</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between">
+<span class="text-label-mono text-on-surface">n8n Self-Host</span>
+<span class="text-label-metadata text-muted">68% EFF</span>
+</div>
+<div class="w-full bg-zinc-800 h-1 mt-1">
+<div class="bg-zinc-600 h-full w-[68%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Background Texture -->
+<div class="absolute -bottom-10 -right-10 opacity-10">
+<span class="material-symbols-outlined text-[160px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+</div>
+<!-- Note-taking & Documentation -->
+<div class="md:col-span-4 bento-card p-6">
+<h3 class="font-headline-section text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">edit_note</span>
+                            Knowledge Base
+                        </h3>
+<div class="space-y-3">
+<div class="p-3 border border-outline-variant bg-surface-container-lowest flex justify-between items-center group cursor-pointer">
+<div class="flex flex-col">
+<span class="font-bold text-sm">Obsidian Sync</span>
+<span class="text-label-metadata text-muted">Local-first markdown</span>
+</div>
+<span class="material-symbols-outlined text-muted group-hover:text-primary transition-colors">arrow_forward</span>
+</div>
+<div class="p-3 border border-outline-variant bg-surface-container-lowest flex justify-between items-center group cursor-pointer">
+<div class="flex flex-col">
+<span class="font-bold text-sm">Notion Workspace</span>
+<span class="text-label-metadata text-muted">Collaborative docs</span>
+</div>
+<div class="flex gap-1">
+<div class="w-1.5 h-1.5 rounded-full bg-primary"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-primary/40"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Communication Matrix -->
+<div class="md:col-span-5 bento-card p-6">
+<h3 class="font-headline-section text-on-surface mb-1 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">forum</span>
+                            Communication
+                        </h3>
+<p class="text-label-metadata text-muted mb-6">Unified protocol messaging.</p>
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between p-4 bg-surface-container-low border border-outline-variant rounded">
+<div class="flex items-center gap-3">
+<img alt="Slack logo" class="w-8 h-8 rounded opacity-80" src="https://lh3.googleusercontent.com/aida/AP1WRLvrx4w6g77GgztYGL_FWci0ftOQUa07jV-wzdmV3C63Gf0mmDBUnnFE4DfVAEWdr4cKFvn7-WIuXCAretYcHJp8XkqJCf6Da58xf3Hk85FMqzjCSCeYO8I2oPHQHRZZAvGUFO63GsApwuXIJ-YREYstTCzad4XDxZvYWIhc9bapthNR-9NZRptdQiEgWahe2D8HZpnRJDPQB3pkCPAXGwsV0uEx2rZ0EREgqmkQR_RY1Kwa8HaL4BtNQrI"/>
+<div>
+<p class="text-body-base font-medium">Slack Integration</p>
+<p class="text-label-metadata text-muted">5 Connected Channels</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-label-mono text-primary text-[10px]">ACTIVE</span>
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-low border border-outline-variant rounded">
+<div class="flex items-center gap-3">
+<img alt="Discord logo" class="w-8 h-8 rounded opacity-80" src="https://lh3.googleusercontent.com/aida/AP1WRLu2oPmXMiZ6nFU57Xig07wwAOuDZkhWQLE0I3vL1l7lPgYlGEAf8mItYeIqLnRTIABtkZOe-JrwnvbanWbGoZYcRLtafYWovl6Ah4NSANfVaYKXlxYUX2ewZ37FOW_RoBXmzBvoqEZeyl-NcUSTTc1ukrXy7PRtNeZUpdo-HbNbzpoatbQUvZov9P2hEGeZy_jadycB8Fve1zoGpSxnhLlygQNwMGWAU0hyq0NP0jrdoLTC-h2F_wocQRQ"/>
+<div>
+<p class="text-body-base font-medium">Discord API</p>
+<p class="text-label-metadata text-muted">Internal Dev Server</p>
+</div>
+</div>
+<span class="text-label-mono text-muted text-[10px]">STANDBY</span>
+</div>
+</div>
+</div>
+<!-- Efficiency Metrics (The "Value" Card) -->
+<div class="md:col-span-3 bento-card p-6 bg-primary text-on-primary border-none">
+<div class="h-full flex flex-col">
+<span class="material-symbols-outlined text-[32px] mb-4">insights</span>
+<h3 class="text-headline-section font-bold leading-tight">Workflow Efficiency</h3>
+<div class="mt-auto">
+<div class="text-[48px] font-extrabold leading-none tracking-tighter">+24%</div>
+<p class="text-label-metadata font-bold mt-2 uppercase">Throughput this month</p>
+<p class="text-label-metadata opacity-80 mt-1">Comparing to previous baseline: 24/7/365 data aggregation.</p>
+</div>
+</div>
+</div>
+<!-- Workflow Visualizer -->
+<div class="md:col-span-12 bento-card p-6">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-section text-on-surface">Integrated Pipeline Visualization</h3>
+<div class="flex gap-2">
+<span class="text-label-mono text-muted border border-outline-variant px-3 py-1 rounded">Last Update: 2m ago</span>
+</div>
+</div>
+<div class="relative w-full aspect-[21/9] md:aspect-[32/9] bg-surface-container-lowest border border-outline-variant overflow-hidden rounded">
+<!-- Placeholder for a complex visualization -->
+<div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, #4edea3 1px, transparent 0); background-size: 24px 24px;"></div>
+<div class="absolute inset-0 flex items-center justify-around px-12">
+<div class="flex flex-col items-center gap-2">
+<div class="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center bg-background z-10">
+<span class="material-symbols-outlined text-primary">data_object</span>
+</div>
+<span class="text-label-metadata font-bold">RAW INPUT</span>
+</div>
+<div class="h-[2px] flex-grow bg-gradient-to-r from-primary to-primary/20 relative">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-zinc-900 px-3 py-1 border border-outline-variant text-[9px] font-mono">ENRICHING</div>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-12 h-12 rounded-full border-2 border-muted flex items-center justify-center bg-background z-10">
+<span class="material-symbols-outlined text-muted">hub</span>
+</div>
+<span class="text-label-metadata font-bold">CENTRAL NODE</span>
+</div>
+<div class="h-[2px] flex-grow bg-gradient-to-r from-primary/20 to-primary relative">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-zinc-900 px-3 py-1 border border-outline-variant text-[9px] font-mono">DISTRIBUTING</div>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center bg-background z-10">
+<span class="material-symbols-outlined text-primary">rocket_launch</span>
+</div>
+<span class="text-label-metadata font-bold">DEPLOYED</span>
+</div>
+</div>
+<!-- Decorative background image prompt -->
+<img class="absolute top-0 left-0 w-full h-full object-cover opacity-10 mix-blend-overlay pointer-events-none" data-alt="A highly complex and detailed network visualization with glowing nodes and thin interconnected lines across a dark digital plane. The style is minimalist and technical, using deep zinc blacks and vibrant emerald green accents. The lighting is low-key, emphasizing the luminescent pathways of data flowing through the architectural grid. The mood is precise, calculated, and professional." src="https://lh3.googleusercontent.com/aida/AP1WRLvu-EFPzVC05Nzn0MbDZAVDbhWcLRxufve3F3WZ3MDpzRy6NcHUCmg0Fz3BjYATeOb7qoGtjlq2l3Gs1dD-yQBvT6T8UknfyZ4UBG2iTNKUBh0UcJJOE2TQ0XZ6BQdCF2KBZUNU6DQniFVjgONfkQpM3YjE1_yWACMx0Yk3JSVkHI9ssAbmzX9RSk8XahXHGla8g6jv9_JCzBLBH5XbuxkrYXTVOgBzYfKLmBUhO5Vah65oiYxaXxZl9JM"/>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<script>
+        // Simple micro-interaction for hover states
+        document.querySelectorAll('.bento-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                // Potential for adding JS-driven particles or sound effects
+            });
+        });
+
+        // Search bar focus effect
+        const searchInput = document.querySelector('input');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-[1.02]');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-[1.02]');
+        });
+    </script>
+</body></html>

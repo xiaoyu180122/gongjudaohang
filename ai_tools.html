@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kinetic Noir | AI Tools Directory</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#47464a",
+                        "surface-container-high": "#2a2a2c",
+                        "on-primary-container": "#00422b",
+                        "on-surface-variant": "#bbcabf",
+                        "accent-emerald": "#10b981",
+                        "surface-bright": "#39393b",
+                        "ink": "#f4f4f5",
+                        "on-primary": "#003824",
+                        "inverse-surface": "#e5e1e4",
+                        "on-tertiary-fixed": "#1b1b1e",
+                        "on-tertiary-container": "#39393c",
+                        "background": "#131315",
+                        "primary-fixed": "#6ffbbe",
+                        "primary-container": "#10b981",
+                        "inverse-on-surface": "#313032",
+                        "outline-variant": "#3c4a42",
+                        "surface-dim": "#131315",
+                        "surface-container-low": "#1c1b1d",
+                        "surface": "#131315",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#e4e1e5",
+                        "surface-variant": "#353437",
+                        "tertiary-fixed-dim": "#c8c6c9",
+                        "error-container": "#93000a",
+                        "secondary-fixed-dim": "#c8c5ca",
+                        "on-secondary-fixed": "#1b1b1e",
+                        "on-error": "#690005",
+                        "on-tertiary": "#303033",
+                        "on-surface": "#e5e1e4",
+                        "on-background": "#e5e1e4",
+                        "surface-container-lowest": "#0e0e10",
+                        "inverse-primary": "#006c49",
+                        "tertiary-container": "#a4a2a6",
+                        "tertiary": "#c8c6c9",
+                        "secondary-fixed": "#e4e1e6",
+                        "on-primary-fixed": "#002113",
+                        "on-secondary-container": "#b6b4b8",
+                        "muted": "#a1a1aa",
+                        "surface-tint": "#4edea3",
+                        "secondary": "#c8c5ca",
+                        "error": "#ffb4ab",
+                        "border-subtle": "#27272a",
+                        "primary": "#4edea3",
+                        "on-tertiary-fixed-variant": "#47464a",
+                        "surface-container": "#201f22",
+                        "outline": "#86948a",
+                        "surface-container-highest": "#353437",
+                        "on-secondary": "#303033",
+                        "on-secondary-fixed-variant": "#47464a",
+                        "primary-fixed-dim": "#4edea3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "grid-margin-mobile": "1rem",
+                        "grid-margin": "2rem",
+                        "bento-gap": "1rem",
+                        "container-max": "1280px",
+                        "bento-gap-sm": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "body-muted": ["Geist"],
+                        "label-mono": ["JetBrains Mono"],
+                        "label-metadata": ["JetBrains Mono"],
+                        "headline-section": ["Geist"],
+                        "display-hero-mobile": ["Geist"],
+                        "display-hero": ["Geist"],
+                        "body-base": ["Geist"]
+                    },
+                    "fontSize": {
+                        "body-muted": ["14px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "label-mono": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "label-metadata": ["11px", {"lineHeight": "1", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "headline-section": ["24px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                        "display-hero-mobile": ["32px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "600"}],
+                        "display-hero": ["40px", {"lineHeight": "1", "letterSpacing": "-0.05em", "fontWeight": "600"}],
+                        "body-base": ["14px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #09090b;
+            color: #e5e1e4;
+            font-family: 'Geist', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(9, 9, 11, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #27272a;
+            border-radius: 2px;
+        }
+        .sparkline-svg {
+            stroke: #10b981;
+            stroke-width: 2;
+            fill: none;
+            filter: drop-shadow(0 0 2px rgba(16, 185, 129, 0.3));
+        }
+    </style>
+</head>
+<body class="flex min-h-screen">
+<!-- SideNavBar Anchor -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface border-r border-outline-variant flex flex-col py-grid-margin z-50">
+<div class="px-6 mb-10">
+<h1 class="font-headline-section text-headline-section text-primary uppercase tracking-tighter font-extrabold">Kinetic Noir</h1>
+<p class="text-[10px] text-muted font-label-mono mt-1">Technical Directory</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Active State: AI Tools -->
+<a class="flex items-center gap-3 py-3 px-6 text-primary border-l-2 border-primary pl-4 font-bold hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="font-body-base text-body-base">AI Tools</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-6 text-on-surface-variant pl-4 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-body-base text-body-base">Dev Tools</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-6 text-on-surface-variant pl-4 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">potted_plant</span>
+<span class="font-body-base text-body-base">Design</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-6 text-on-surface-variant pl-4 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">bolt</span>
+<span class="font-body-base text-body-base">Productivity</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-outline-variant pt-6 space-y-1">
+<a class="flex items-center gap-3 py-3 px-6 text-on-surface-variant pl-4 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-base text-body-base">Settings</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-6 text-on-surface-variant pl-4 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-body-base text-body-base">Documentation</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 flex-1 flex flex-col min-h-screen">
+<!-- TopNavBar Anchor -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] z-40 bg-surface/80 backdrop-blur-md border-b border-outline-variant h-16 flex justify-between items-center px-grid-margin">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-muted text-sm">search</span>
+<input class="w-full bg-background border border-border-subtle rounded-lg py-1.5 pl-10 pr-4 text-body-base focus:outline-none focus:border-primary transition-all" placeholder="Search AI models, APIs, and frameworks..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-variant border border-outline-variant overflow-hidden">
+<img alt="User Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLu6r6-1AqAXzKc9Rse9INn48RqkyyiqP-hGjD-AjOx-hp_NKf1jxDe40AmjfwWaYT8xGbcirmQDsJkW2soEbePQ1bvI_DPpGtQhpSpDqXgMwKLbcqFlt96UZa3H0BigPu7jMKFXsvR5YM_Wwck6fIvbGNCnWBMAdL1R_cUdiguLhzHfj--HHpDQqqV-5U7aVdiwYahLirBSdCP4PlNuM6P_DaSjxlfVYl-iZNe6VOHfzUF-JzRadQjBvz0"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="mt-16 p-grid-margin max-w-container-max mx-auto w-full">
+<!-- Hero Header Section -->
+<div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-mono text-label-mono text-primary uppercase tracking-widest">Global Index</span>
+</div>
+<h2 class="font-display-hero text-display-hero text-on-surface">Artificial Intelligence</h2>
+<p class="font-body-muted text-body-muted text-muted mt-2">Discover and integrate cutting-edge machine learning solutions. <span class="text-on-surface font-medium">128 Tools Indexing</span></p>
+</div>
+<div class="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
+<button class="px-4 py-1.5 rounded-full bg-primary text-on-primary font-label-mono text-label-mono border border-primary">All Tools</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant font-label-mono text-label-mono border border-border-subtle hover:border-primary transition-colors">LLM</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant font-label-mono text-label-mono border border-border-subtle hover:border-primary transition-colors">Image Generation</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant font-label-mono text-label-mono border border-border-subtle hover:border-primary transition-colors">Code Assistants</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant font-label-mono text-label-mono border border-border-subtle hover:border-primary transition-colors">Audio</button>
+</div>
+</div>
+<!-- Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-bento-gap">
+<!-- Tool Card 1: Large Featured -->
+<div class="md:col-span-8 group bg-surface-container-low border border-border-subtle rounded-xl p-6 hover:bg-surface-container-high transition-all duration-300 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-6">
+<span class="material-symbols-outlined text-primary/20 group-hover:text-primary transition-colors text-6xl opacity-10">neurology</span>
+</div>
+<div class="flex flex-col h-full justify-between">
+<div>
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 rounded-lg bg-background border border-border-subtle flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">psychology</span>
+</div>
+<div>
+<h3 class="font-headline-section text-on-surface">NeuralNexus Pro</h3>
+<div class="flex gap-2 mt-1">
+<span class="font-label-metadata text-label-metadata bg-primary/10 text-primary px-2 py-0.5 border border-primary/20 rounded-sm">API Available</span>
+<span class="font-label-metadata text-label-metadata bg-surface-variant text-muted px-2 py-0.5 border border-border-subtle rounded-sm">Enterprise</span>
+</div>
+</div>
+</div>
+<p class="font-body-base text-body-base text-muted max-w-lg">Advanced conversational LLM with multi-modal reasoning capabilities. Optimized for technical documentation and complex architectural planning.</p>
+</div>
+<div class="mt-8 flex items-end justify-between">
+<div>
+<span class="font-label-metadata text-label-metadata text-muted block mb-2 uppercase tracking-tighter">Usage Growth (30d)</span>
+<div class="w-48 h-10">
+<svg class="w-full h-full" viewbox="0 0 200 40">
+<path class="sparkline-svg" d="M0,35 Q20,30 40,32 T80,25 T120,15 T160,20 T200,5"></path>
+</svg>
+</div>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-label-mono text-label-mono px-6 py-2 rounded-lg flex items-center gap-2 transition-all">
+                                Launch Tool <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Tool Card 2: Medium -->
+<div class="md:col-span-4 group bg-surface-container-low border border-border-subtle rounded-xl p-6 hover:bg-surface-container-high transition-all duration-300">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-background border border-border-subtle flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">code_blocks</span>
+</div>
+<h3 class="font-body-base font-semibold text-on-surface">ForgeScript AI</h3>
+</div>
+<p class="font-body-muted text-body-muted text-muted mb-4">Real-time code assistant that suggests entire modules based on context. Supports 45+ languages.</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="font-label-metadata text-label-metadata bg-surface-variant text-muted px-2 py-0.5 rounded-sm">Open Source</span>
+</div>
+<div>
+<span class="font-label-metadata text-label-metadata text-muted block mb-2 uppercase">Usage</span>
+<div class="w-full h-8">
+<svg class="w-full h-full" viewbox="0 0 100 20">
+<path class="sparkline-svg" d="M0,18 L10,15 L20,17 L30,10 L40,12 L50,5 L60,8 L70,3 L80,6 L100,2"></path>
+</svg>
+</div>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="md:col-span-4 group bg-surface-container-low border border-border-subtle rounded-xl p-6 hover:bg-surface-container-high transition-all duration-300">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-background border border-border-subtle flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">image</span>
+</div>
+<h3 class="font-body-base font-semibold text-on-surface">PrismGen v4</h3>
+</div>
+<p class="font-body-muted text-body-muted text-muted mb-4">High-fidelity image generation for UI prototypes and product mockups with consistent lighting.</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="font-label-metadata text-label-metadata bg-primary/10 text-primary px-2 py-0.5 rounded-sm">GPU Accelerated</span>
+</div>
+<div>
+<span class="font-label-metadata text-label-metadata text-muted block mb-2 uppercase">Growth</span>
+<div class="w-full h-8">
+<svg class="w-full h-full" viewbox="0 0 100 20">
+<path class="sparkline-svg" d="M0,10 L25,12 L50,8 L75,15 L100,5"></path>
+</svg>
+</div>
+</div>
+</div>
+<div class="md:col-span-4 group bg-surface-container-low border border-border-subtle rounded-xl p-6 hover:bg-surface-container-high transition-all duration-300">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-background border border-border-subtle flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">mic</span>
+</div>
+<h3 class="font-body-base font-semibold text-on-surface">EchoVoice.io</h3>
+</div>
+<p class="font-body-muted text-body-muted text-muted mb-4">Low-latency text-to-speech engine with emotional tonal range and instant voice cloning.</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="font-label-metadata text-label-metadata bg-surface-variant text-muted px-2 py-0.5 rounded-sm">Beta Access</span>
+</div>
+<div>
+<span class="font-label-metadata text-label-metadata text-muted block mb-2 uppercase">Integrations</span>
+<div class="w-full h-8">
+<svg class="w-full h-full" viewbox="0 0 100 20">
+<path class="sparkline-svg" d="M0,15 L20,15 L40,10 L60,12 L80,5 L100,8"></path>
+</svg>
+</div>
+</div>
+</div>
+<div class="md:col-span-4 group bg-surface-container-low border border-border-subtle rounded-xl p-6 hover:bg-surface-container-high transition-all duration-300">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-background border border-border-subtle flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">data_object</span>
+</div>
+<h3 class="font-body-base font-semibold text-on-surface">Structurize</h3>
+</div>
+<p class="font-body-muted text-body-muted text-muted mb-4">Automatic unstructured data parsing into JSON schemas with 99.8% precision at scale.</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="font-label-metadata text-label-metadata bg-primary/10 text-primary px-2 py-0.5 rounded-sm">REST API</span>
+<span class="font-label-metadata text-label-metadata bg-surface-variant text-muted px-2 py-0.5 rounded-sm">Webhooks</span>
+</div>
+<div>
+<span class="font-label-metadata text-label-metadata text-muted block mb-2 uppercase">Throughput</span>
+<div class="w-full h-8">
+<svg class="w-full h-full" viewbox="0 0 100 20">
+<path class="sparkline-svg" d="M0,18 L30,12 L60,14 L100,2"></path>
+</svg>
+</div>
+</div>
+</div>
+<!-- Row 3: Image-based Feature Card -->
+<div class="md:col-span-12 group bg-surface-container-low border border-border-subtle rounded-xl overflow-hidden flex flex-col md:flex-row h-72 hover:border-primary transition-all duration-300">
+<div class="md:w-1/3 relative h-full bg-background overflow-hidden">
+<img class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700" data-alt="A highly detailed close-up of a futuristic neural network core glowing with emerald green filaments of light. The structure is composed of geometric crystal-like nodes pulsing with data energy. Deep shadows and high-contrast dark-mode aesthetics dominate the scene, creating a sense of immense processing power and technical complexity in a minimalist dark workspace environment." src="https://lh3.googleusercontent.com/aida/AP1WRLsIlkX44tP9nzgLvbwxEoMzONXi7aUXEIiGl_kdSkAPqLhnXy1QrabHrHI680niAy_TMEpv87pOhSukQcZkMu33e8Na6WmRoPyhfbJoo3SnUz3dLYwqyqoXBRV4peHhIRgELTLnwJxHORwA99CBkbMBHUKCLylZsw3jCjuoxIcQa-aJmLZNLChrmr9_Iyp5CUkVTCHCtOf4-ctQNmjFmqEXIF_7xGYxwV4kBO_OcV6043FUgOlzIt1jCE4"/>
+<div class="absolute inset-0 bg-gradient-to-r from-transparent to-surface-container-low md:to-surface-container-low"></div>
+</div>
+<div class="md:w-2/3 p-8 flex flex-col justify-center">
+<div class="flex items-center gap-2 mb-4">
+<span class="px-2 py-0.5 bg-primary text-on-primary text-[10px] font-label-mono uppercase rounded">Featured Release</span>
+</div>
+<h3 class="font-display-hero-mobile text-display-hero-mobile text-on-surface mb-4">OmniModel Unified Framework</h3>
+<p class="font-body-base text-body-base text-muted max-w-xl mb-6">The first universal wrapper for orchestration across GPT-4, Claude 3, and Gemini. Automatically switches models based on latency and cost optimization thresholds.</p>
+<div class="flex items-center gap-8">
+<div class="flex flex-col">
+<span class="font-label-mono text-[18px] text-primary">94k+</span>
+<span class="font-label-metadata text-label-metadata text-muted">Weekly Pulls</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-mono text-[18px] text-primary">12ms</span>
+<span class="font-label-metadata text-label-metadata text-muted">Avg. Latency</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-mono text-[18px] text-primary">MIT</span>
+<span class="font-label-metadata text-label-metadata text-muted">Licensing</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Activity Feed (Atmospheric) -->
+<footer class="mt-auto border-t border-outline-variant bg-surface-container-lowest py-4 px-grid-margin">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-accent-emerald animate-pulse"></span>
+<span class="font-label-metadata text-label-metadata text-muted uppercase">System Status: Optimal</span>
+</div>
+<div class="h-4 w-[1px] bg-border-subtle"></div>
+<div class="flex items-center gap-2">
+<span class="font-label-metadata text-label-metadata text-muted uppercase">Global Registry:</span>
+<span class="font-label-mono text-label-mono text-primary">v2.4.9-Stable</span>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="font-label-metadata text-label-metadata text-muted">© 2024 Kinetic Noir</span>
+</div>
+</div>
+</footer>
+</main>
+<!-- Interactive Layer: Vanilla JS for subtle effects -->
+<script>
+        // Subtle mouse tracking for card highlights
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // Search Bar Focus Effect
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-[1.02]');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-[1.02]');
+        });
+    </script>
+</body></html>
