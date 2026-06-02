@@ -1,8 +1,8 @@
-# 🛠️ 程序员工具导航 (gongjudaohang)
+# 🛠️ 程序员工具导航 (developer-nav)
 
-一个精美且高效的程序员/开发者工具箱导航网站，专为开发者打造。集成了多种常用的开发辅助工具、API 管理、数据分析报告与开发效率工具。
+一个精美且高效的程序员/开发者工具箱导航网站，专为开发者打造。集成了多种常用的开发辅助工具、API 管理、数据分析报告与开发效率工具统计。
 
-✨ **在线预览**：[https://xiaoyu180122.github.io/gongjudaohang/](https://xiaoyu180122.github.io/gongjudaohang/)
+✨ **在线预览**：[https://xiaoyu180122.github.io/developer-nav/](https://xiaoyu180122.github.io/developer-nav/)
 
 ---
 
@@ -33,8 +33,8 @@
 
 1. **克隆项目**
    ```bash
-   git clone https://github.com/xiaoyu180122/gongjudaohang.git
-   cd gongjudaohang
+   git clone https://github.com/xiaoyu180122/developer-nav.git
+   cd developer-nav
    ```
 
 2. **安装依赖**
@@ -60,6 +60,6 @@
 
 项目已集成 **GitHub Actions** 自动化构建流。每次向 `main` 分支推送代码时，工作流会自动执行以下步骤：
 1. 拉取代码，安装 Node.js v22 与 pnpm v11 环境。
-2. 注入仓库基路径 `NEXT_PUBLIC_BASE_PATH=/gongjudaohang`。
+2. 注入仓库基路径 `NEXT_PUBLIC_BASE_PATH=/developer-nav`。
 3. 运行静态构建与导出 (`pnpm run build`)。
 4. 自动上传产物并部署至该仓库的 **GitHub Pages** 分支。

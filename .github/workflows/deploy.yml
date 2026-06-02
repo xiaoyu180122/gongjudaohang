@@ -60,7 +60,7 @@ jobs:
       - name: Build with Next.js
         run: pnpm run build
         env:
-          NEXT_PUBLIC_BASE_PATH: /gongjudaohang
+          NEXT_PUBLIC_BASE_PATH: /developer-nav
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
